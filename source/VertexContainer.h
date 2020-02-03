@@ -1,10 +1,11 @@
 #pragma once
 
+
 #include <QVector>
 
 #include "Edge.h"
 
-class EdgeContainer
+class VertexContainer
 {
 public:
     using value_type = Edge;
@@ -15,9 +16,9 @@ public:
     using iterator = container_type::iterator;
     using const_iterator = container_type::const_iterator;
 
-    EdgeContainer(int size = 0);
-    EdgeContainer(const EdgeContainer&);
-    EdgeContainer& operator=(const EdgeContainer&);
+    VertexContainer(int size = 0);
+    VertexContainer(const VertexContainer&);
+    VertexContainer& operator=(const VertexContainer&);
 
     void insert(const value_type&, int i);
     void remove(int i);

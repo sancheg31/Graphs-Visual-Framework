@@ -1,5 +1,4 @@
 
-
 include(qmake-target-platform.pri)
 include(qmake-destination-path.pri)
 
@@ -26,13 +25,15 @@ SOURCES += \
     source/EdgeContainer.cpp \
     source/GraphFactory.cpp \
     source/Vertex.cpp \
+    source/VertexContainer.cpp \
     source/main.cpp \
 
 HEADERS += \
     source/Edge.h \
     source/EdgeContainer.h \
     source/GraphFactory.h \
-    source/Vertex.h
+    source/Vertex.h \
+    source/VertexContainer.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
