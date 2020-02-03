@@ -6,9 +6,10 @@
 #include "VertexContainer.h"
 #include "EdgeContainer.h"
 
+class GraphImplementation;
+
 class Graph
 {
-
 protected:
     class VertexIterator;
     class EdgeIterator;
