@@ -19,7 +19,7 @@ public:
     EdgeContainer(const EdgeContainer&);
     EdgeContainer& operator=(const EdgeContainer&);
 
-    void insert(const value_type&, int i);
+    void insert(int i, const value_type&);
     void remove(int i);
 
     int size() const;
@@ -29,11 +29,11 @@ public:
     const value_type& operator[](int i) const;
 
     iterator begin();
-    iterator begin() const;
+    const_iterator begin() const;
     const_iterator cbegin() const;
 
     iterator end();
-    iterator end() const;
+    const_iterator end() const;
     const_iterator cend() const;
 
 private:
