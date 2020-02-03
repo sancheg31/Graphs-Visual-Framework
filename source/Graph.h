@@ -1,5 +1,7 @@
 #pragma once
 
+#include <QVector>
+
 #include "Edge.h"
 #include "Vertex.h"
 
@@ -12,8 +14,11 @@ class Graph
 {
 protected:
     class VertexIterator;
+    class ConstVertexIterator;
     class EdgeIterator;
+    class ConstEdgeIterator;
 
+    using container_type = QVector<QPair<Vertex, EdgeContainer>>;
 public:
 
     using iterator = VertexIterator;
@@ -25,23 +30,24 @@ public:
 
     EdgeContainer edges(const Vertex&) const;
     const Edge& edge(const Vertex&, const Vertex&) const;
-
     Edge& edge(const Vertex&, const Vertex&);
 
+    void setEdge(const Edge&);
+
     VertexIterator begin();
-    const VertexIterator begin() const;
+    VertexIterator begin() const;
 
     VertexIterator end();
-    const VertexIterator end() const;
+    VertexIterator end() const;
 
     EdgeIterator begin(const Vertex&);
-    const EdgeIterator begin(const Vertex&) const;
+    EdgeIterator begin(const Vertex&) const;
 
     EdgeIterator end(const Vertex&);
-    const EdgeIterator end(const Vertex&) const;
+    EdgeIterator end(const Vertex&) const;
 
 private:
-    GraphImplementation impl;
+    QVector<QPair<Vertex, EdgeContainer>> cont;
 
 };
 
