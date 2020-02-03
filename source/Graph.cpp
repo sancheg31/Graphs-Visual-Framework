@@ -104,7 +104,7 @@ public:
 
     friend bool operator==(const self_type& ob1, const self_type& ob2) {
         return (ob1.ended == ob2.ended) || (ob1.graph == ob2.graph && ob1.vertexId == ob2.vertexId &&
-                                            ob2.edgeNumber == ob2.edgeNumber);
+                                            ob1.edgeNumber == ob2.edgeNumber);
     }
 
     friend bool operator!=(const self_type& ob1, const self_type& ob2) {
@@ -138,13 +138,17 @@ EdgeContainer Graph::edges(const Vertex& ob) const {
 
 const Edge& Graph::edge(const Vertex& ob1, const Vertex& ob2) const {
     const auto& tempCont = cont[ob1.id()].second;
-    auto it = std::find_if(tempCont.begin(), tempCont.end(), [ob2](auto it) { *it.adjacentVetrices().second == ob2; });
+    auto it = std::find_if(tempCont.begin(), tempCont.end(), [ob2](const Edge& edge) {
+        return edge.adjacentVertices().second == ob2;
+    });
     return *it;
 }
 
 Edge& Graph::edge(const Vertex& ob1, const Vertex& ob2) {
     const auto& tempCont = cont[ob1.id()].second;
-    auto it = std::find_if(tempCont.begin(), tempCont.end(), [ob2](auto it) { *it.adjacentVetrices().second == ob2; });
+    auto it = std::find_if(tempCont.begin(), tempCont.end(), [ob2](const Edge& edge) {
+        return edge.adjacentVertices().second == ob2;
+    });
 }
 
 void Graph::setEdge(const Edge& edge) {

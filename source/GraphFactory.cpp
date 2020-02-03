@@ -15,3 +15,5 @@ Vertex* GraphFactory::createVertex() const {
 Edge* GraphFactory::createEdge() const {
     return new Edge(Vertex{}, Vertex{}, 0);
 }
+
+GraphFactory::GraphFactory() { }

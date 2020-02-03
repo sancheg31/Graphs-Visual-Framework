@@ -13,6 +13,7 @@ public:
         RightToLeft
     };
 
+    Edge();
     Edge(const Vertex&, const Vertex&, int, Orientation = Orientation::None);
     Edge(const Edge&);
     Edge& operator=(const Edge&);

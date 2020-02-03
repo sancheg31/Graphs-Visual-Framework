@@ -1,6 +1,8 @@
 #include "Edge.h"
 
 
+Edge::Edge(): left_(), right_(), value_(0), orientation_(Orientation::None) { }
+
 Edge::Edge(const Vertex& l, const Vertex& r, int val, Edge::Orientation o)
     : left_(l), right_(r), value_(val), orientation_(o) { }
 
