@@ -15,6 +15,18 @@ auto Graph::ConstEdgeIterator::operator++(int) -> self_type {
     return temp;
 }
 
+auto Graph::ConstEdgeIterator::operator--() -> self_type {
+    decrementIterator();
+    return *this;
+}
+
+auto Graph::ConstEdgeIterator::operator--(int) -> self_type {
+    self_type temp = *this;
+    decrementIterator();
+    return temp;
+}
+
+
 auto Graph::ConstEdgeIterator::operator*() -> const value_type& {
     if (ended) {
         pointer ptr{nullptr};

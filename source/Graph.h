@@ -8,7 +8,6 @@
 #include "VertexContainer.h"
 #include "EdgeContainer.h"
 
-class GraphImplementation;
 
 class Graph
 {
@@ -50,7 +49,7 @@ public:
     ConstEdgeIterator end(const Vertex&) const;
 
 private:
-    QVector<QPair<Vertex, EdgeContainer>> cont;
+    container_type cont;
 
 };
 

@@ -21,6 +21,8 @@ public:
     self_type operator++();
     self_type operator++(int);
 
+    self_type operator--();
+    self_type operator--(int);
 
     const value_type& operator*();
     pointer operator->();

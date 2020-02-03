@@ -15,6 +15,10 @@ public:
     EdgeIterator(Graph* graph_, int vertexId_, bool isEnded = false);
     self_type operator++();
     self_type operator++(int);
+
+    self_type operator--();
+    self_type operator--(int);
+
     value_type& operator*();
     pointer operator->();
 

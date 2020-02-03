@@ -14,6 +14,17 @@ auto Graph::EdgeIterator::operator++(int) -> self_type {
     return temp;
 }
 
+auto Graph::EdgeIterator::operator--() -> self_type {
+    decrementIterator();
+    return *this;
+}
+
+auto Graph::EdgeIterator::operator--(int) -> self_type {
+    self_type temp = *this;
+    decrementIterator();
+    return temp;
+}
+
 auto Graph::EdgeIterator::operator*() -> value_type& {
     if (ended) {
         pointer ptr{nullptr};
