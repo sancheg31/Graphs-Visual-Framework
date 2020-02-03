@@ -13,12 +13,15 @@ class GraphImplementation;
 class Graph
 {
 protected:
+    class GraphIterator;
+
     class VertexIterator;
     class ConstVertexIterator;
     class EdgeIterator;
     class ConstEdgeIterator;
 
     using container_type = QVector<QPair<Vertex, EdgeContainer>>;
+
 public:
 
     using iterator = VertexIterator;
