@@ -3,67 +3,9 @@
 #include <algorithm>
 #include <iterator>
 
+#include "VertexIterator.h"
 
 
-class Graph::VertexIterator
-{
-public:
-    using self_type = Graph::VertexIterator;
-    using value_type = Edge;
-    using reference = Edge&;
-    using pointer = Edge*;
-    using iterator_category = std::bidirectional_iterator_tag;
-    using difference = int;
-
-    VertexIterator(Graph* graph_, bool isEnded = false): graph(graph_), ended(isEnded) { }
-    self_type operator++() {
-        incrementIterator();
-        return *this;
-    }
-    self_type operator++(int) {
-        self_type temp = *this;
-        incrementIterator();
-        return temp;
-    }
-    value_type& operator*() {
-        if (ended) {
-            pointer ptr{nullptr};
-            return *ptr;
-        }
-        return graph->cont[vertexId].second[edgeNumber];
-    }
-    pointer operator->() {
-        if (ended) {
-            pointer ptr{nullptr};
-            *ptr = *ptr;
-            return ptr;
-        }
-        return &graph->cont[vertexId].second[edgeNumber];
-    }
-
-    friend bool operator==(const self_type& ob1, const self_type& ob2) {
-        return (ob1.ended == ob2.ended) || (ob1.graph == ob2.graph && ob1.vertexId == ob2.vertexId &&
-                                            ob2.edgeNumber == ob2.edgeNumber);
-    }
-
-    friend bool operator!=(const self_type& ob1, const self_type& ob2) {
-        return !(ob1 == ob2);
-    }
-
-private:
-    void incrementIterator() {
-        ++edgeNumber;
-        while (vertexId < graph->cont.size() && edgeNumber >= graph->cont[vertexId].second.size()) {
-            ++vertexId;
-            edgeNumber = 0;
-        }
-        ended = vertexId >= graph->cont.size();
-    }
-    Graph* graph;
-    int vertexId{0};
-    int edgeNumber{0};
-    bool ended{false};
-};
 
 
 class Graph::EdgeIterator

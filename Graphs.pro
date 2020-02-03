@@ -28,6 +28,7 @@ SOURCES += \
     source/GraphImplementation.cpp \
     source/Vertex.cpp \
     source/VertexContainer.cpp \
+    source/VertexIterator.cpp \
     source/main.cpp \
 
 HEADERS += \
@@ -37,7 +38,8 @@ HEADERS += \
     source/GraphFactory.h \
     source/GraphImplementation.h \
     source/Vertex.h \
-    source/VertexContainer.h
+    source/VertexContainer.h \
+    source/VertexIterator.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
