@@ -38,7 +38,7 @@ Edge& Graph::edge(const Vertex& ob1, const Vertex& ob2) {
     });
 }
 
-void Graph::setEdge(const Edge& edge) {
+void Graph::addEdge(const Edge& edge) {
     auto vertices = edge.adjacentVertices();
     cont[vertices.first.id()].second.push_back(edge);
     if (!edge.isOriented())

@@ -26,7 +26,7 @@ public:
     friend bool operator==(const Edge&, const Edge&);
     friend bool operator!=(const Edge&, const Edge&);
 
-protected:
+private:
     Vertex left_;
     Vertex right_;
     int value_;

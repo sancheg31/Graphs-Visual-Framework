@@ -12,7 +12,6 @@
 class Graph
 {
 protected:
-    class GraphIterator;
 
     class VertexIterator;
     class ConstVertexIterator;
@@ -23,8 +22,10 @@ protected:
 
 public:
 
-    using iterator = VertexIterator;
-    using const_iterator = const VertexIterator;
+    using vertex_iterator = VertexIterator;
+    using const_vertex_iterator = const VertexIterator;
+    using edge_iterator = EdgeIterator;
+    using const_edge_iterator = ConstEdgeIterator;
 
     Graph();
     Graph(const Graph&);
@@ -34,7 +35,7 @@ public:
     const Edge& edge(const Vertex&, const Vertex&) const;
     Edge& edge(const Vertex&, const Vertex&);
 
-    void setEdge(const Edge&);
+    void addEdge(const Edge&);
 
     VertexIterator begin();
     ConstVertexIterator begin() const;
