@@ -2,11 +2,8 @@
 
 #include <QObject>
 
-class Vertex: public QObject
+class Vertex
 {
-    Q_OBJECT
-    Q_PROPERTY(int value READ value CONSTANT)
-    Q_PROPERTY(int id READ id CONSTANT)
 public:
     Vertex(int id, int value);
 
