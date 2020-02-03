@@ -20,6 +20,7 @@ public:
     VertexContainer(const VertexContainer&);
     VertexContainer& operator=(const VertexContainer&);
 
+    void push_back(const value_type&);
     void insert(int i, const value_type&);
     void remove(int i);
 
@@ -35,7 +36,7 @@ public:
 
     iterator end();
     const_iterator end() const;
-    const_iterator cend() const;;
+    const_iterator cend() const;
 
 private:
     container_type cont;

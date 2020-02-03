@@ -11,6 +11,10 @@ EdgeContainer& EdgeContainer::operator=(const EdgeContainer& ob) {
     return *this;
 }
 
+void EdgeContainer::push_back(const value_type& ob) {
+    cont.push_back(ob);
+}
+
 void EdgeContainer::insert( int i, const value_type& ob) {
     cont.insert(i, ob);
 }

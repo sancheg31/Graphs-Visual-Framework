@@ -11,6 +11,10 @@ VertexContainer& VertexContainer::operator=(const VertexContainer& ob) {
     return *this;
 }
 
+void VertexContainer::push_back(const value_type& ob) {
+    cont.push_back(ob);
+}
+
 void VertexContainer::insert(int i, const value_type& ob) {
     cont.insert(i, ob);
 }

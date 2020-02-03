@@ -19,6 +19,7 @@ public:
     EdgeContainer(const EdgeContainer&);
     EdgeContainer& operator=(const EdgeContainer&);
 
+    void push_back(const value_type&);
     void insert(int i, const value_type&);
     void remove(int i);
 
