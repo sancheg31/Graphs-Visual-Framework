@@ -24,10 +24,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     source/Vertex.cpp \
     source/main.cpp \
-    source/MainWindow.cpp
 
 HEADERS += \
-    source/MainWindow.h \
     source/Vertex.h
 
 # Default rules for deployment.
