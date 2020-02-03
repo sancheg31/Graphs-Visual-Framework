@@ -23,6 +23,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     source/Edge.cpp \
     source/EdgeContainer.cpp \
+    source/Graph.cpp \
     source/GraphFactory.cpp \
     source/Vertex.cpp \
     source/VertexContainer.cpp \
@@ -31,6 +32,7 @@ SOURCES += \
 HEADERS += \
     source/Edge.h \
     source/EdgeContainer.h \
+    source/Graph.h \
     source/GraphFactory.h \
     source/Vertex.h \
     source/VertexContainer.h
