@@ -6,6 +6,8 @@
 #include "VertexIterator.h"
 #include "EdgeIterator.h"
 
+#include "ConstVertexIterator.h"
+#include "ConstEdgeIterator.h"
 
 
 Graph::Graph() { }
@@ -47,30 +49,30 @@ auto Graph::begin() -> VertexIterator {
     return VertexIterator{this, false};
 }
 
-auto Graph::begin() const -> VertexIterator {
-    return VertexIterator{const_cast<Graph*>(this), false};
+auto Graph::begin() const -> ConstVertexIterator {
+    return ConstVertexIterator{this, false};
 }
 
 auto Graph::end() -> VertexIterator {
     return VertexIterator{this, true};
 }
 
-auto Graph::end() const -> VertexIterator {
-    return VertexIterator{const_cast<Graph*>(this), true};
+auto Graph::end() const -> ConstVertexIterator {
+    return ConstVertexIterator{this, true};
 }
 
-Graph::EdgeIterator Graph::begin(const Vertex& ob) {
+auto Graph::begin(const Vertex& ob) -> EdgeIterator {
     return EdgeIterator{this, ob.id(), false};
 }
 
-Graph::EdgeIterator Graph::begin(const Vertex& ob) const {
-    return EdgeIterator{const_cast<Graph*>(this), ob.id(), false};
+auto Graph::begin(const Vertex& ob) const -> ConstEdgeIterator {
+    return ConstEdgeIterator{this, ob.id(), false};
 }
 
 Graph::EdgeIterator Graph::end(const Vertex& ob) {
-    return EdgeIterator{const_cast<Graph*>(this), ob.id(), true};
+    return EdgeIterator{this, ob.id(), true};
 }
 
-Graph::EdgeIterator Graph::end(const Vertex& ob) const {
-    return EdgeIterator{const_cast<Graph*>(this), ob.id(), true};
+auto Graph::end(const Vertex& ob) const -> ConstEdgeIterator {
+    return ConstEdgeIterator{this, ob.id(), true};
 }

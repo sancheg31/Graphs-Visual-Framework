@@ -2,7 +2,7 @@
 
 
 
-Graph::ConstVertexIterator::ConstVertexIterator(Graph* graph_, bool isEnded): graph(graph_), ended(isEnded) { }
+Graph::ConstVertexIterator::ConstVertexIterator(const Graph* graph_, bool isEnded): graph(graph_), ended(isEnded) { }
 
 auto Graph::ConstVertexIterator::operator++() -> self_type {
     incrementIterator();

@@ -35,16 +35,16 @@ public:
     void setEdge(const Edge&);
 
     VertexIterator begin();
-    VertexIterator begin() const;
+    ConstVertexIterator begin() const;
 
     VertexIterator end();
-    VertexIterator end() const;
+    ConstVertexIterator end() const;
 
     EdgeIterator begin(const Vertex&);
-    EdgeIterator begin(const Vertex&) const;
+    ConstEdgeIterator begin(const Vertex&) const;
 
     EdgeIterator end(const Vertex&);
-    EdgeIterator end(const Vertex&) const;
+    ConstEdgeIterator end(const Vertex&) const;
 
 private:
     QVector<QPair<Vertex, EdgeContainer>> cont;

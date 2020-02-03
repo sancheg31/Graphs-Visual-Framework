@@ -1,7 +1,7 @@
 
 #include "ConstEdgeIterator.h"
 
-Graph::ConstEdgeIterator::ConstEdgeIterator(Graph* graph_, int vertexId_, bool isEnded):
+Graph::ConstEdgeIterator::ConstEdgeIterator(const Graph* graph_, int vertexId_, bool isEnded):
     graph(graph_), vertexId(vertexId_), ended(isEnded) { }
 
 auto Graph::ConstEdgeIterator::operator++() -> self_type {

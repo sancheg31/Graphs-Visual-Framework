@@ -13,7 +13,7 @@ public:
     using iterator_category = std::bidirectional_iterator_tag;
     using difference = int;
 
-    ConstVertexIterator(Graph* graph, bool isEnded = false);
+    ConstVertexIterator(const Graph* graph, bool isEnded = false);
 
     self_type operator++();
     self_type operator++(int);
@@ -34,7 +34,7 @@ private:
 
     void incrementIterator();
 
-    Graph* graph;
+    const Graph* graph;
     int vertexId;
     int edgeNumber{0};
     bool ended;
