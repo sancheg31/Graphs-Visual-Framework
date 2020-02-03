@@ -21,6 +21,7 @@ TEMPLATE = app
 DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
+    source/ConstVertexIterator.cpp \
     source/Edge.cpp \
     source/EdgeContainer.cpp \
     source/EdgeIterator.cpp \
@@ -33,6 +34,7 @@ SOURCES += \
     source/main.cpp \
 
 HEADERS += \
+    source/ConstVertexIterator.h \
     source/Edge.h \
     source/EdgeContainer.h \
     source/EdgeIterator.h \

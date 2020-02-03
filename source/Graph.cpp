@@ -8,8 +8,6 @@
 
 
 
-
-
 Graph::Graph() { }
 
 Graph::Graph(const Graph& ob): cont(ob.cont) { }
