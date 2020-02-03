@@ -25,6 +25,7 @@ SOURCES += \
     source/EdgeContainer.cpp \
     source/Graph.cpp \
     source/GraphFactory.cpp \
+    source/GraphImplementation.cpp \
     source/Vertex.cpp \
     source/VertexContainer.cpp \
     source/main.cpp \
@@ -34,6 +35,7 @@ HEADERS += \
     source/EdgeContainer.h \
     source/Graph.h \
     source/GraphFactory.h \
+    source/GraphImplementation.h \
     source/Vertex.h \
     source/VertexContainer.h
 
