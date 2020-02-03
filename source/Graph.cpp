@@ -4,66 +4,11 @@
 #include <iterator>
 
 #include "VertexIterator.h"
+#include "EdgeIterator.h"
 
 
 
 
-class Graph::EdgeIterator
-{
-public:
-    using self_type = Graph::EdgeIterator;
-    using value_type = Edge;
-    using reference = Edge&;
-    using pointer = Edge*;
-    using iterator_category = std::bidirectional_iterator_tag;
-    using difference = int;
-
-    EdgeIterator(Graph* graph_, int vertexId_, bool isEnded = false): graph(graph_), vertexId(vertexId_), ended(isEnded) { }
-    self_type operator++() {
-        incrementIterator();
-        return *this;
-    }
-    self_type operator++(int) {
-        self_type temp = *this;
-        incrementIterator();
-        return temp;
-    }
-    value_type& operator*() {
-        if (ended) {
-            pointer ptr{nullptr};
-            return *ptr;
-        }
-        return graph->cont[vertexId].second[edgeNumber];
-    }
-    pointer operator->() {
-        if (ended) {
-            pointer ptr{nullptr};
-            *ptr = *ptr;
-            return ptr;
-        }
-        return &graph->cont[vertexId].second[edgeNumber];
-    }
-
-    friend bool operator==(const self_type& ob1, const self_type& ob2) {
-        return (ob1.ended == ob2.ended) || (ob1.graph == ob2.graph && ob1.vertexId == ob2.vertexId &&
-                                            ob1.edgeNumber == ob2.edgeNumber);
-    }
-
-    friend bool operator!=(const self_type& ob1, const self_type& ob2) {
-        return !(ob1 == ob2);
-    }
-
-private:
-    void incrementIterator() {
-        ++edgeNumber;
-        ended = edgeNumber >= graph->cont[vertexId].second.size();
-    }
-    Graph* graph;
-    const int vertexId;
-    int edgeNumber{0};
-    bool ended{false};
-
-};
 
 Graph::Graph() { }
 
@@ -100,19 +45,19 @@ void Graph::setEdge(const Edge& edge) {
         cont[vertices.second.id()].second.push_back(edge);
 }
 
-Graph::VertexIterator Graph::begin() {
+auto Graph::begin() -> VertexIterator {
     return VertexIterator{this, false};
 }
 
-Graph::VertexIterator Graph::begin() const {
+auto Graph::begin() const -> VertexIterator {
     return VertexIterator{const_cast<Graph*>(this), false};
 }
 
-Graph::VertexIterator Graph::end() {
+auto Graph::end() -> VertexIterator {
     return VertexIterator{this, true};
 }
 
-Graph::VertexIterator Graph::end() const {
+auto Graph::end() const -> VertexIterator {
     return VertexIterator{const_cast<Graph*>(this), true};
 }
 

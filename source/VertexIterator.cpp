@@ -1,7 +1,8 @@
 
 #include "VertexIterator.h"
 
-Graph::VertexIterator::VertexIterator(Graph* graph_, bool isEnded): graph(graph_), ended(isEnded) { }
+Graph::VertexIterator::VertexIterator(Graph* graph_, bool isEnded):
+    graph(graph_), ended(isEnded) { }
 
 auto Graph::VertexIterator::operator++() -> self_type {
     incrementIterator();
