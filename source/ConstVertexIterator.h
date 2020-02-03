@@ -18,6 +18,9 @@ public:
     self_type operator++();
     self_type operator++(int);
 
+    self_type operator--();
+    self_type operator--(int);
+
     pointer operator->();
     const value_type& operator*();
 
@@ -33,6 +36,7 @@ public:
 private:
 
     void incrementIterator();
+    void decrementIterator();
 
     const Graph* graph;
     int vertexId;

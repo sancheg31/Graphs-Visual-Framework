@@ -36,3 +36,17 @@ void Graph::ConstEdgeIterator::incrementIterator() {
     ended = edgeNumber >= graph->cont[vertexId].second.size();
 }
 
+void Graph::ConstEdgeIterator::decrementIterator() {
+    --edgeNumber;
+    ended = edgeNumber < 0;
+}
+
+
+
+
+
+
+
+
+
+

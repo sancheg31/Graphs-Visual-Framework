@@ -15,6 +15,17 @@ auto Graph::ConstVertexIterator::operator++(int) -> self_type {
     return temp;
 }
 
+auto Graph::ConstVertexIterator::operator--() -> self_type {
+    decrementIterator();
+    return *this;
+}
+
+auto Graph::ConstVertexIterator::operator--(int) -> self_type {
+    self_type temp = *this;
+    decrementIterator();
+    return temp;
+}
+
 auto Graph::ConstVertexIterator::operator->() -> pointer {
     if (ended) {
         pointer ptr{nullptr};
@@ -38,4 +49,13 @@ void Graph::ConstVertexIterator::incrementIterator() {
         edgeNumber = 0;
     }
     ended = vertexId >= graph->cont.size();
+}
+
+void Graph::ConstVertexIterator::decrementIterator() {
+    --edgeNumber;
+    while (vertexId >=0 && edgeNumber < 0 && edgeNumber >= graph->cont[vertexId].second.size()) {
+        --vertexId;
+        edgeNumber = 0;
+    }
+    ended = vertexId < 0;
 }

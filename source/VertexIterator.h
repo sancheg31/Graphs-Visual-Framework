@@ -15,6 +15,10 @@ public:
     VertexIterator(Graph* graph_, bool isEnded = false);
     self_type operator++();
     self_type operator++(int);
+
+    self_type operator--();
+    self_type operator--(int);
+
     value_type& operator*();
     pointer operator->();
 
@@ -29,6 +33,7 @@ public:
 
 private:
     void incrementIterator();
+    void decrementIterator();
 
     Graph* graph{nullptr};
     int vertexId{0};

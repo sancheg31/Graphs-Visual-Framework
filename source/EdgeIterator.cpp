@@ -35,4 +35,8 @@ void Graph::EdgeIterator::incrementIterator() {
     ended = edgeNumber >= graph->cont[vertexId].second.size();
 }
 
+void Graph::EdgeIterator::decrementIterator() {
+    --edgeNumber;
+    ended = edgeNumber < 0;
+}
 

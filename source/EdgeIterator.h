@@ -29,6 +29,7 @@ public:
 
 private:
     void incrementIterator();
+    void decrementIterator();
 
     Graph* graph{nullptr};
     const int vertexId;
