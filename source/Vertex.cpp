@@ -2,6 +2,14 @@
 
 Vertex::Vertex(int id, int value): id_(id), value_(value) { }
 
+Vertex::Vertex(const Vertex& ob): id_(ob.id_), value_(ob.value_) { }
+
+Vertex& Vertex::operator=(const Vertex& ob) {
+    id_ = ob.id_;
+    value_ = ob.value_;
+    return *this;
+}
+
 int Vertex::value() const {
     return value_;
 }

@@ -4,6 +4,16 @@
 Edge::Edge(const Vertex& l, const Vertex& r, int val, Edge::Orientation o)
     : left_(l), right_(r), value_(val), orientation_(o) { }
 
+Edge::Edge(const Edge& ob): left_(ob.left_), right_(ob.right_), value_(ob.value_), orientation_(ob.orientation_) { }
+
+Edge& Edge::operator=(const Edge& ob) {
+    left_ = ob.left_;
+    right_ = ob.right_;
+    value_ = ob.value_;
+    orientation_ = ob.orientation_;
+    return *this;
+}
+
 QPair<Vertex, Vertex> Edge::adjacentVertices() const {
     return QPair{left_, right_};
 }

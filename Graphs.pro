@@ -22,10 +22,14 @@ TEMPLATE = app
 DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
+    source/Edge.cpp \
+    source/GraphFactory.cpp \
     source/Vertex.cpp \
     source/main.cpp \
 
 HEADERS += \
+    source/Edge.h \
+    source/GraphFactory.h \
     source/Vertex.h
 
 # Default rules for deployment.

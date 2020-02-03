@@ -5,7 +5,9 @@
 class Vertex
 {
 public:
-    Vertex(int id, int value);
+    Vertex(int id = 0, int value = 0);
+    Vertex(const Vertex&);
+    Vertex& operator=(const Vertex&);
 
     int value() const;
     int id() const;
