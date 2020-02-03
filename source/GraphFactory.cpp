@@ -13,7 +13,11 @@ Vertex* GraphFactory::createVertex() const {
 }
 
 Edge* GraphFactory::createEdge() const {
-    return new Edge(Vertex{}, Vertex{}, 0);
+    return new Edge();
+}
+
+Graph* GraphFactory::createGraph() const {
+    return new Graph();
 }
 
 GraphFactory::GraphFactory() { }

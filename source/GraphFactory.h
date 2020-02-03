@@ -3,6 +3,8 @@
 #include "Edge.h"
 #include "Vertex.h"
 
+#include "Graph.h"
+
 class GraphFactory
 {
 public:
@@ -12,6 +14,7 @@ public:
 
     Vertex* createVertex() const;
     Edge* createEdge() const;
+    Graph* createGraph() const;
 
 protected:
     GraphFactory();
