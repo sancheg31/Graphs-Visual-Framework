@@ -4,6 +4,7 @@
 
 #include "Graph.h"
 #include "Edge.h"
+#include "Vertex.h"
 
 class Graph::ConstEdgeIterator
 {
@@ -16,7 +17,7 @@ public:
     using iterator_category = std::bidirectional_iterator_tag;
     using difference = int;
 
-    ConstEdgeIterator(const Graph*, int vertexId, bool ended = false);
+    ConstEdgeIterator(const Graph*, Vertex vertexId, bool ended = false);
 
     self_type operator++();
     self_type operator++(int);
@@ -42,7 +43,7 @@ private:
     void decrementIterator();
 
     const Graph* graph;
-    int vertexId{0};
+    Vertex vertexId;
     int edgeNumber{0};
     bool ended{false};
 };

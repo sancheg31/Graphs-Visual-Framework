@@ -1,6 +1,6 @@
 #include "EdgeIterator.h"
 
-Graph::EdgeIterator::EdgeIterator(Graph* graph_, int vertexId_, bool isEnded):
+Graph::EdgeIterator::EdgeIterator(Graph* graph_, Vertex vertexId_, bool isEnded):
     graph(graph_), vertexId(vertexId_), ended(isEnded) { }
 
 auto Graph::EdgeIterator::operator++() -> self_type {
@@ -30,7 +30,7 @@ auto Graph::EdgeIterator::operator*() -> value_type& {
         pointer ptr{nullptr};
         return *ptr;
     }
-    return graph->cont[vertexId].second[edgeNumber];
+    return graph->cont[vertexId.id()][edgeNumber];
 }
 auto Graph::EdgeIterator::operator->() -> pointer {
     if (ended) {
@@ -38,12 +38,12 @@ auto Graph::EdgeIterator::operator->() -> pointer {
         *ptr = *ptr;
         return ptr;
     }
-    return &graph->cont[vertexId].second[edgeNumber];
+    return &graph->cont[vertexId.id()][edgeNumber];
 }
 
 void Graph::EdgeIterator::incrementIterator() {
     ++edgeNumber;
-    ended = edgeNumber >= graph->cont[vertexId].second.size();
+    ended = edgeNumber >= graph->cont[vertexId.id()].size();
 }
 
 void Graph::EdgeIterator::decrementIterator() {

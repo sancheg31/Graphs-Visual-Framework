@@ -2,7 +2,7 @@
 
 
 
-VertexContainer::VertexContainer(int size): cont(size) { }
+VertexContainer::VertexContainer() { }
 
 VertexContainer::VertexContainer(const VertexContainer& ob): cont(ob.cont) { }
 
@@ -11,16 +11,13 @@ VertexContainer& VertexContainer::operator=(const VertexContainer& ob) {
     return *this;
 }
 
-void VertexContainer::push_back(const value_type& ob) {
-    cont.push_back(ob);
+
+void VertexContainer::insert(const value_type& ob) {
+    cont.insert(ob.id(), ob);
 }
 
-void VertexContainer::insert(int i, const value_type& ob) {
-    cont.insert(i, ob);
-}
-
-void VertexContainer::remove(int i) {
-    cont.removeAt(i);
+void VertexContainer::remove(const QString& key) {
+    cont.remove(key);
 }
 
 int VertexContainer::size() const {
@@ -31,12 +28,12 @@ bool VertexContainer::isEmpty() const {
     return cont.isEmpty();
 }
 
-VertexContainer::value_type& VertexContainer::operator[](int i) {
-    return cont[i];
+VertexContainer::value_type& VertexContainer::operator[](const QString& key) {
+    return cont[key];
 }
 
-const VertexContainer::value_type& VertexContainer::operator[](int i) const {
-    return cont[i];
+VertexContainer::value_type VertexContainer::operator[](const QString& key) const {
+    return cont[key];
 }
 
 VertexContainer::iterator VertexContainer::begin() {

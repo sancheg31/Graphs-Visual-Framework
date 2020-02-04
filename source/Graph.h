@@ -18,7 +18,7 @@ protected:
     class EdgeIterator;
     class ConstEdgeIterator;
 
-    using container_type = QVector<QPair<Vertex, EdgeContainer>>;
+    using container_type = QHash<QString, EdgeContainer>;
 
 public:
 
@@ -32,10 +32,11 @@ public:
     Graph& operator=(const Graph&);
 
     EdgeContainer edges(const Vertex&) const;
+    VertexContainer vertices() const;
     const Edge& edge(const Vertex&, const Vertex&) const;
-    Edge& edge(const Vertex&, const Vertex&);
 
     void addEdge(const Edge&);
+    void removeEdge(const Edge&);
 
     VertexIterator begin();
     ConstVertexIterator begin() const;

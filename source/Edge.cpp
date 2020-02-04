@@ -1,5 +1,6 @@
 #include "Edge.h"
 
+#include <QPair>
 
 Edge::Edge(): left_(), right_(), value_(0), orientation_(Orientation::None) { }
 

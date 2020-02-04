@@ -3,6 +3,8 @@
 #include "Graph.h"
 #include "Edge.h"
 
+#include "VertexContainer.h"
+
 class Graph::ConstVertexIterator
 {
 public:
@@ -39,7 +41,8 @@ private:
     void decrementIterator();
 
     const Graph* graph;
-    int vertexId;
+    VertexContainer vertices;
+    VertexContainer::iterator vertexId;
     int edgeNumber{0};
     bool ended;
 };

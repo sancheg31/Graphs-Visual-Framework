@@ -1,7 +1,7 @@
 
 #include "ConstEdgeIterator.h"
 
-Graph::ConstEdgeIterator::ConstEdgeIterator(const Graph* graph_, int vertexId_, bool isEnded):
+Graph::ConstEdgeIterator::ConstEdgeIterator(const Graph* graph_, Vertex vertexId_, bool isEnded):
     graph(graph_), vertexId(vertexId_), ended(isEnded) { }
 
 auto Graph::ConstEdgeIterator::operator++() -> self_type {
@@ -32,7 +32,7 @@ auto Graph::ConstEdgeIterator::operator*() -> const value_type& {
         pointer ptr{nullptr};
         return *ptr;
     }
-    return graph->cont[vertexId].second[edgeNumber];
+    return graph->cont[vertexId.id()][edgeNumber];
 }
 
 auto Graph::ConstEdgeIterator::operator->() -> pointer {
@@ -40,12 +40,12 @@ auto Graph::ConstEdgeIterator::operator->() -> pointer {
         pointer ptr{nullptr};
         return &*ptr;
     }
-    return &graph->cont[vertexId].second[edgeNumber];
+    return &graph->cont[vertexId.id()][edgeNumber];
 }
 
 void Graph::ConstEdgeIterator::incrementIterator() {
     ++edgeNumber;
-    ended = edgeNumber >= graph->cont[vertexId].second.size();
+    ended = edgeNumber >= graph->cont[vertexId.id()].size();
 }
 
 void Graph::ConstEdgeIterator::decrementIterator() {

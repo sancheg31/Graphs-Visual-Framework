@@ -1,22 +1,25 @@
 #pragma once
 
 #include <QObject>
+#include <QString>
 
 class Vertex
 {
 public:
-    Vertex(int id = 0, int value = 0);
+    Vertex(QString id = "", int value = 0);
     Vertex(const Vertex&);
     Vertex& operator=(const Vertex&);
 
     int value() const;
-    int id() const;
+    QString id() const;
+
+    void setValue(int);
 
     friend bool operator==(const Vertex&, const Vertex&);
     friend bool operator!=(const Vertex&, const Vertex&);
 
 protected:
-    int id_;
+    QString id_;
     int value_;
 };
 
