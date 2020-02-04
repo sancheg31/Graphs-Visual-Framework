@@ -11,11 +11,9 @@ RCC_DIR = $${PWD}/build/$${DESTINATION_PATH}/.rcc
 message(project dir: $${PWD})
 message(dest dir: $${DESTINATION_PATH})
 
-QT += core gui
+QT += core
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-
-CONFIG += c++17
+CONFIG += c++17 console
 TEMPLATE = app
 
 DEFINES += QT_DEPRECATED_WARNINGS
@@ -29,6 +27,7 @@ SOURCES += \
     source/Graph.cpp \
     source/GraphFactory.cpp \
     source/GraphImplementation.cpp \
+    source/MaximalFlow.cpp \
     source/Vertex.cpp \
     source/VertexContainer.cpp \
     source/VertexIterator.cpp \
@@ -43,6 +42,7 @@ HEADERS += \
     source/Graph.h \
     source/GraphFactory.h \
     source/GraphImplementation.h \
+    source/MaximalFlow.h \
     source/Vertex.h \
     source/VertexContainer.h \
     source/VertexIterator.h
