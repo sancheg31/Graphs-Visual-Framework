@@ -25,6 +25,8 @@ private:
 
     Path findPath(Graph*, const Vertex&, const Vertex&);
     void recalculateNet(Path, Graph*);
+    void calculateMaximalFlowPerEdge(Graph* newg, Graph* oldg);
+    EdgeContainer filterEdges(const EdgeContainer&, const QVector<Vertex>&);
 
     Graph* sourceGraph;
     Graph* newGraph;

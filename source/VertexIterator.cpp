@@ -1,8 +1,12 @@
 
 #include "VertexIterator.h"
 
+#include <QDebug>
+
 Graph::VertexIterator::VertexIterator(Graph* graph_, bool isEnded):
-    graph(graph_), vertices(graph->vertices()), vertexId(vertices.begin()), ended(isEnded) { }
+    graph(graph_), vertices(graph->vertices()), vertexId(vertices.begin()), ended(isEnded) {
+    ended = (vertexId == vertices.end());
+}
 
 auto Graph::VertexIterator::operator++() -> self_type {
     incrementIterator();
@@ -27,19 +31,20 @@ auto Graph::VertexIterator::operator--(int) -> self_type {
 }
 
 auto Graph::VertexIterator::operator*() -> value_type& {
-    if (ended) {
+    /*if (ended) {
         pointer ptr{nullptr};
         return *ptr;
-    }
+    }*/
     return graph->cont[vertexId->id()][edgeNumber];
 }
 
 auto Graph::VertexIterator::operator->() -> pointer {
-    if (ended) {
+    /*if (ended) {
+        qDebug() << "disaster";
         pointer ptr{nullptr};
         *ptr = *ptr;
         return ptr;
-    }
+    }*/
     return &graph->cont[vertexId->id()][edgeNumber];
 }
 

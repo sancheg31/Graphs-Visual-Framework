@@ -19,7 +19,18 @@ void EdgeContainer::insert(int i, const value_type& ob) {
 }
 
 void EdgeContainer::remove(int i) {
-    cont.removeAt(i);
+    cont.remove(i);
+}
+
+void EdgeContainer::remove(iterator it) {
+    cont.removeAll(*it);
+}
+
+void EdgeContainer::remove_if(std::function<bool(const Edge&)> f) {
+    for (int i = 0; i < size(); ++i)
+        if (f(cont[i])) {
+            remove(i);
+        }
 }
 
 int EdgeContainer::size() const {

@@ -2,7 +2,9 @@
 #include "ConstEdgeIterator.h"
 
 Graph::ConstEdgeIterator::ConstEdgeIterator(const Graph* graph_, Vertex vertexId_, bool isEnded):
-    graph(graph_), vertexId(vertexId_), ended(isEnded) { }
+    graph(graph_), vertexId(vertexId_), ended(isEnded) {
+    ended = (edgeNumber >= graph->cont[vertexId.id()].size());
+}
 
 auto Graph::ConstEdgeIterator::operator++() -> self_type {
     incrementIterator();
@@ -25,7 +27,6 @@ auto Graph::ConstEdgeIterator::operator--(int) -> self_type {
     decrementIterator();
     return temp;
 }
-
 
 auto Graph::ConstEdgeIterator::operator*() -> const value_type& {
     if (ended) {

@@ -1,7 +1,9 @@
 #include "EdgeIterator.h"
 
 Graph::EdgeIterator::EdgeIterator(Graph* graph_, Vertex vertexId_, bool isEnded):
-    graph(graph_), vertexId(vertexId_), ended(isEnded) { }
+    graph(graph_), vertexId(vertexId_), ended(isEnded) {
+    ended = (edgeNumber >= graph->cont[vertexId.id()].size());
+}
 
 auto Graph::EdgeIterator::operator++() -> self_type {
     incrementIterator();

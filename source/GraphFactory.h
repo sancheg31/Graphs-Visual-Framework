@@ -10,7 +10,8 @@ class GraphFactory
 public:
     GraphFactory(const GraphFactory&) = delete;
     GraphFactory(GraphFactory&&) = delete;
-    GraphFactory* instance();
+
+    static GraphFactory* instance();
 
     Vertex* createVertex() const;
     Edge* createEdge() const;

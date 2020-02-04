@@ -18,7 +18,8 @@ protected:
     class EdgeIterator;
     class ConstEdgeIterator;
 
-    using container_type = QHash<QString, EdgeContainer>;
+    using edge_container_type = QHash<QString, EdgeContainer>;
+    using vertex_container_type = QHash<QString, Vertex>;
 
 public:
 
@@ -34,6 +35,10 @@ public:
     EdgeContainer edges(const Vertex&) const;
     VertexContainer vertices() const;
     const Edge& edge(const Vertex&, const Vertex&) const;
+
+
+    void addVertex(const Vertex&);
+    void removeVertex(const Vertex&);
 
     void addEdge(const Edge&);
     void removeEdge(const Edge&);
@@ -51,7 +56,12 @@ public:
     ConstEdgeIterator end(const Vertex&) const;
 
 private:
-    container_type cont;
-
+    edge_container_type cont;
+    vertex_container_type vert;
 };
 
+#include "VertexIterator.h"
+#include "EdgeIterator.h"
+
+#include "ConstVertexIterator.h"
+#include "ConstEdgeIterator.h"

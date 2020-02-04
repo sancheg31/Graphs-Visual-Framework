@@ -3,7 +3,9 @@
 
 
 Graph::ConstVertexIterator::ConstVertexIterator(const Graph* graph_, bool isEnded):
-    graph(graph_), vertices(graph->vertices()), vertexId(vertices.begin()), ended(isEnded) { }
+    graph(graph_), vertices(graph->vertices()), vertexId(vertices.begin()), ended(isEnded) {
+    ended = (vertexId == vertices.end());
+}
 
 auto Graph::ConstVertexIterator::operator++() -> self_type {
     incrementIterator();

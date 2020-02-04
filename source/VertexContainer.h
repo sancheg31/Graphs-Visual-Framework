@@ -23,9 +23,13 @@ public:
 
     void insert(const value_type&);
     void remove(const QString&);
+    void clear();
+
 
     int size() const;
+    bool contains(const QString&) const;
     bool isEmpty() const;
+
 
     value_type& operator[](const QString&);
     value_type operator[](const QString&) const;

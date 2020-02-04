@@ -18,10 +18,14 @@ public:
     Edge(const Edge&);
     Edge& operator=(const Edge&);
 
-    QPair<Vertex, Vertex> adjacentVertices() const;
+    const Vertex& left() const;
+    const Vertex& right() const;
+
     int value() const;
     bool isOriented() const;
     Orientation orientation() const;
+
+    void setValue(int);
 
     friend bool operator==(const Edge&, const Edge&);
     friend bool operator!=(const Edge&, const Edge&);

@@ -3,6 +3,8 @@
 #include <algorithm>
 #include <iterator>
 
+#include <QDebug>
+
 #include "VertexIterator.h"
 #include "EdgeIterator.h"
 
@@ -26,7 +28,7 @@ EdgeContainer Graph::edges(const Vertex& ob) const {
 
 VertexContainer Graph::vertices() const {
     VertexContainer result;
-    for (const auto & x: cont.keys())
+    for (const auto & x: vert.values())
         result.insert(x);
     return result;
 }
@@ -34,26 +36,38 @@ VertexContainer Graph::vertices() const {
 const Edge& Graph::edge(const Vertex& ob1, const Vertex& ob2) const {
     const auto& tempCont = cont[ob1.id()];
     auto it = std::find_if(tempCont.begin(), tempCont.end(), [ob2](const Edge& edge) {
-        return edge.adjacentVertices().second == ob2;
+        return edge.right().id() == ob2;
     });
     return *it;
 }
 
+void Graph::addVertex(const Vertex& v) {
+    vert.insert(v.id(), v);
+}
+
+void Graph::removeVertex(const Vertex& v) {
+    vert.remove(v.id());
+}
+
 void Graph::addEdge(const Edge& edge) {
-    auto vertices = edge.adjacentVertices();
-    cont[vertices.first.id()].push_back(edge);
-    if (!edge.isOriented())
-        cont[vertices.second.id()].push_back(edge);
+    //qDebug() << "addEdge::size before: " << cont[edge.left().id()].size();
+    cont[edge.left().id()].push_back(edge);
+    if (!edge.isOriented()) {
+        cont[edge.right().id()].push_back(edge);
+    }
+    //qDebug() << "edge added: " << edge.left().id() << " " << edge.right().id() << " " << edge.value();
+    //qDebug() << "addEdge::size after: " << cont[edge.left().id()].size();
 }
 
 void Graph::removeEdge(const Edge& edge) {
-    auto vertices = edge.adjacentVertices();
-    auto & tempCont = cont[vertices.first.id()];
-    std::remove(tempCont.begin(), tempCont.end(), edge);
+    //qDebug() << "removeEdge::size before: " << cont[edge.left().id()].size();
+    auto it = std::find(cont[edge.left().id()].begin(), cont[edge.left().id()].end(), edge);
+    cont[edge.left().id()].remove(it);
     if (!edge.isOriented()) {
-        auto & tempCont = cont[vertices.second.id()];
-        std::remove(tempCont.begin(), tempCont.end(), edge);
+        std::remove(cont[edge.left().id()].begin(), cont[edge.left().id()].end(), edge);
     }
+    //qDebug() << "edge removed: " << edge.left().id() << " " << edge.right().id() << " " << edge.value();
+    //qDebug() << "removeEdge::size after: " << cont[edge.left().id()].size();
 }
 
 auto Graph::begin() -> VertexIterator {

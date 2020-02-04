@@ -11,17 +11,25 @@ VertexContainer& VertexContainer::operator=(const VertexContainer& ob) {
     return *this;
 }
 
-
 void VertexContainer::insert(const value_type& ob) {
-    cont.insert(ob.id(), ob);
+    if (!cont.contains(ob.id()))
+        cont.insert(ob.id(), ob);
 }
 
 void VertexContainer::remove(const QString& key) {
     cont.remove(key);
 }
 
+void VertexContainer::clear() {
+    cont.clear();
+}
+
 int VertexContainer::size() const {
     return cont.size();
+}
+
+bool VertexContainer::contains(const QString& key) const {
+    return cont.contains(key);
 }
 
 bool VertexContainer::isEmpty() const {

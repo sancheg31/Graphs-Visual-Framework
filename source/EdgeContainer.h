@@ -1,6 +1,8 @@
 #pragma once
 
 #include <QVector>
+#include <utility>
+#include <functional>
 
 #include "Edge.h"
 
@@ -22,6 +24,9 @@ public:
     void push_back(const value_type&);
     void insert(int i, const value_type&);
     void remove(int i);
+    void remove(iterator);
+
+    void remove_if(std::function<bool(const Edge&)>);
 
     int size() const;
     bool isEmpty() const;

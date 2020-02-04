@@ -17,8 +17,12 @@ Edge& Edge::operator=(const Edge& ob) {
     return *this;
 }
 
-QPair<Vertex, Vertex> Edge::adjacentVertices() const {
-    return QPair{left_, right_};
+const Vertex& Edge::left() const {
+    return left_;
+}
+
+const Vertex& Edge::right() const {
+    return right_;
 }
 
 int Edge::value() const {
@@ -33,9 +37,13 @@ Edge::Orientation Edge::orientation() const {
     return orientation_;
 }
 
+void Edge::setValue(int val) {
+    value_ = val;
+}
+
 bool operator==(const Edge& ob1, const Edge& ob2) {
     return (ob1.left_ == ob2.left_) && (ob1.right_ == ob2.right_) &&
-            (ob1.value() == ob2.value()) && (ob1.orientation_ == ob2.orientation_);
+            (ob1.value_ == ob2.value_) && (ob1.orientation_ == ob2.orientation_);
 }
 
 bool operator!=(const Edge& ob1, const Edge& ob2) {
