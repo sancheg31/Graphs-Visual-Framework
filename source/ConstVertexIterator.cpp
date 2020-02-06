@@ -1,35 +1,37 @@
 #include "ConstVertexIterator.h"
 
 
+namespace graph {
+namespace iterators {
 
-Graph::ConstVertexIterator::ConstVertexIterator(const Graph* graph_, bool isEnded):
+ConstVertexIterator::ConstVertexIterator(const models::Graph* graph_, bool isEnded):
     graph(graph_), vertices(graph->vertices()), vertexId(vertices.begin()), ended(isEnded) {
     ended = (vertexId == vertices.end());
 }
 
-auto Graph::ConstVertexIterator::operator++() -> self_type {
+auto ConstVertexIterator::operator++() -> self_type {
     incrementIterator();
     return *this;
 }
 
-auto Graph::ConstVertexIterator::operator++(int) -> self_type {
+auto ConstVertexIterator::operator++(int) -> self_type {
     self_type temp = *this;
     incrementIterator();
     return temp;
 }
 
-auto Graph::ConstVertexIterator::operator--() -> self_type {
+auto ConstVertexIterator::operator--() -> self_type {
     decrementIterator();
     return *this;
 }
 
-auto Graph::ConstVertexIterator::operator--(int) -> self_type {
+auto ConstVertexIterator::operator--(int) -> self_type {
     self_type temp = *this;
     decrementIterator();
     return temp;
 }
 
-auto Graph::ConstVertexIterator::operator->() -> pointer {
+auto ConstVertexIterator::operator->() -> pointer {
     if (ended) {
         pointer ptr{nullptr};
         return &*ptr;
@@ -37,7 +39,7 @@ auto Graph::ConstVertexIterator::operator->() -> pointer {
     return &graph->cont[vertexId->id()][edgeNumber];
 }
 
-auto Graph::ConstVertexIterator::operator*() -> const value_type& {
+auto ConstVertexIterator::operator*() -> const value_type& {
     if (ended) {
         pointer ptr{nullptr};
         return *ptr;
@@ -45,7 +47,7 @@ auto Graph::ConstVertexIterator::operator*() -> const value_type& {
     return graph->cont[vertexId->id()][edgeNumber];
 }
 
-void Graph::ConstVertexIterator::incrementIterator() {
+void ConstVertexIterator::incrementIterator() {
     ++edgeNumber;
     while (vertexId != vertices.end() && edgeNumber >= graph->cont[vertexId->id()].size()) {
         ++vertexId;
@@ -54,7 +56,7 @@ void Graph::ConstVertexIterator::incrementIterator() {
     ended = vertexId == vertices.end();
 }
 
-void Graph::ConstVertexIterator::decrementIterator() {
+void ConstVertexIterator::decrementIterator() {
     --edgeNumber;
     while (vertexId != vertices.begin()-1 && edgeNumber < 0 && edgeNumber >= graph->cont[vertexId->id()].size()) {
         --vertexId;
@@ -62,3 +64,8 @@ void Graph::ConstVertexIterator::decrementIterator() {
     }
     ended = vertexId == vertices.begin()-1;
 }
+
+} //iterators
+} //graph
+
+

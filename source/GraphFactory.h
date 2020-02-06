@@ -5,6 +5,8 @@
 
 #include "Graph.h"
 
+using namespace graph::models;
+
 class GraphFactory
 {
 public:

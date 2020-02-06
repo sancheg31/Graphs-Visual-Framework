@@ -5,6 +5,8 @@
 
 #include "VertexContainer.h"
 
+using namespace graph;
+
 MaximalFlow::MaximalFlow(Graph* sg): sourceGraph(sg) { }
 
 void MaximalFlow::solve(const Vertex& so, const Vertex& si) {

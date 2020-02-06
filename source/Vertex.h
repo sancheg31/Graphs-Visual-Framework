@@ -3,6 +3,9 @@
 #include <QObject>
 #include <QString>
 
+namespace graph {
+namespace models {
+
 class Vertex
 {
 public:
@@ -22,4 +25,9 @@ protected:
     QString id_;
     int value_;
 };
+
+} //models
+} //graph
+
+
 

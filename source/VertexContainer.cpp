@@ -1,6 +1,8 @@
 #include "VertexContainer.h"
 
 
+namespace graph {
+namespace containers {
 
 VertexContainer::VertexContainer() { }
 
@@ -36,34 +38,37 @@ bool VertexContainer::isEmpty() const {
     return cont.isEmpty();
 }
 
-VertexContainer::value_type& VertexContainer::operator[](const QString& key) {
+auto VertexContainer::operator[](const QString& key) -> value_type&{
     return cont[key];
 }
 
-VertexContainer::value_type VertexContainer::operator[](const QString& key) const {
+auto VertexContainer::operator[](const QString& key) const -> value_type {
     return cont[key];
 }
 
-VertexContainer::iterator VertexContainer::begin() {
+auto VertexContainer::begin() -> iterator {
     return cont.begin();
 }
 
-VertexContainer::const_iterator VertexContainer::begin() const {
+auto VertexContainer::begin() const -> const_iterator {
     return cont.begin();
 }
 
-VertexContainer::const_iterator VertexContainer::cbegin() const {
+auto VertexContainer::cbegin() const -> const_iterator{
     return cont.cbegin();
 }
 
-VertexContainer::iterator VertexContainer::end() {
+auto VertexContainer::end() -> iterator{
     return cont.end();
 }
 
-VertexContainer::const_iterator VertexContainer::end() const {
+auto VertexContainer::end() const -> const_iterator {
     return cont.end();
 }
 
-VertexContainer::const_iterator VertexContainer::cend() const {
+auto VertexContainer::cend() const -> const_iterator {
     return cont.cend();
 }
+
+} //containers
+} //graph

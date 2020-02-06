@@ -3,34 +3,38 @@
 
 #include <QDebug>
 
-Graph::VertexIterator::VertexIterator(Graph* graph_, bool isEnded):
-    graph(graph_), vertices(graph->vertices()), vertexId(vertices.begin()), ended(isEnded) {
+namespace graph {
+namespace iterators {
+
+VertexIterator::VertexIterator(models::Graph* graph_, bool isEnded):
+    graph(graph_), vertices(graph->vertices()), ended(isEnded) {
+    vertexId = vertices.begin();
     ended = (vertexId == vertices.end());
 }
 
-auto Graph::VertexIterator::operator++() -> self_type {
+auto VertexIterator::operator++() -> self_type {
     incrementIterator();
     return *this;
 }
 
-auto  Graph::VertexIterator::operator++(int) -> self_type {
+auto  VertexIterator::operator++(int) -> self_type {
     self_type temp = *this;
     incrementIterator();
     return temp;
 }
 
-auto Graph::VertexIterator::operator--() -> self_type {
+auto VertexIterator::operator--() -> self_type {
     decrementIterator();
     return *this;
 }
 
-auto Graph::VertexIterator::operator--(int) -> self_type {
+auto VertexIterator::operator--(int) -> self_type {
     self_type temp = *this;
     decrementIterator();
     return temp;
 }
 
-auto Graph::VertexIterator::operator*() -> value_type& {
+auto VertexIterator::operator*() -> value_type& {
     /*if (ended) {
         pointer ptr{nullptr};
         return *ptr;
@@ -38,7 +42,7 @@ auto Graph::VertexIterator::operator*() -> value_type& {
     return graph->cont[vertexId->id()][edgeNumber];
 }
 
-auto Graph::VertexIterator::operator->() -> pointer {
+auto VertexIterator::operator->() -> pointer {
     /*if (ended) {
         qDebug() << "disaster";
         pointer ptr{nullptr};
@@ -48,7 +52,7 @@ auto Graph::VertexIterator::operator->() -> pointer {
     return &graph->cont[vertexId->id()][edgeNumber];
 }
 
-void Graph::VertexIterator::incrementIterator() {
+void VertexIterator::incrementIterator() {
     ++edgeNumber;
     while (vertexId != vertices.end() && edgeNumber >= graph->cont[vertexId->id()].size()) {
         ++vertexId;
@@ -57,7 +61,7 @@ void Graph::VertexIterator::incrementIterator() {
     ended = vertexId == vertices.end();
 }
 
-void Graph::VertexIterator::decrementIterator() {
+void VertexIterator::decrementIterator() {
     --edgeNumber;
     while (vertexId != vertices.begin()-1 && edgeNumber < 0 && edgeNumber >= graph->cont[vertexId->id()].size()) {
         --vertexId;
@@ -65,5 +69,10 @@ void Graph::VertexIterator::decrementIterator() {
     }
     ended = vertexId == vertices.begin()-1;
 }
+
+} //iterators
+} //graph
+
+
 
 

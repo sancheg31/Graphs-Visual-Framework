@@ -6,10 +6,13 @@
 
 #include "Edge.h"
 
+namespace graph {
+namespace containers {
+
 class VertexContainer
 {
 public:
-    using value_type = Vertex;
+    using value_type = models::Vertex;
 protected:
     using container_type = QHash<QString, value_type>;
 public:
@@ -45,4 +48,9 @@ public:
 private:
     container_type cont;
 };
+
+} //containers
+} //graph
+
+
 

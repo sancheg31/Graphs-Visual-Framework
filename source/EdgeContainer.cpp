@@ -1,5 +1,8 @@
 #include "EdgeContainer.h"
 
+namespace graph {
+namespace containers {
+
 
 EdgeContainer::EdgeContainer(int size): cont(size) { }
 
@@ -26,7 +29,7 @@ void EdgeContainer::remove(iterator it) {
     cont.removeAll(*it);
 }
 
-void EdgeContainer::remove_if(std::function<bool(const Edge&)> f) {
+void EdgeContainer::remove_if(std::function<bool(const value_type&)> f) {
     for (int i = 0; i < size(); ++i)
         if (f(cont[i])) {
             remove(i);
@@ -72,3 +75,7 @@ EdgeContainer::const_iterator EdgeContainer::end() const {
 EdgeContainer::const_iterator EdgeContainer::cend() const {
     return cont.cend();
 }
+
+} //containers
+} //graph
+

@@ -4,6 +4,9 @@
 
 #include "Vertex.h"
 
+namespace graph {
+namespace models {
+
 class Edge
 {
 public:
@@ -36,4 +39,9 @@ private:
     int value_;
     Orientation orientation_;
 };
+
+} //models
+} //graph
+
+
 

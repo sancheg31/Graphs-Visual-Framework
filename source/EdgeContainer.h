@@ -6,10 +6,13 @@
 
 #include "Edge.h"
 
+namespace graph {
+namespace containers {
+
 class EdgeContainer
 {
 public:
-    using value_type = Edge;
+    using value_type = models::Edge;
 protected:
     using container_type = QVector<value_type>;
 public:
@@ -26,7 +29,7 @@ public:
     void remove(int i);
     void remove(iterator);
 
-    void remove_if(std::function<bool(const Edge&)>);
+    void remove_if(std::function<bool(const value_type&)>);
 
     int size() const;
     bool isEmpty() const;
@@ -45,4 +48,9 @@ public:
 private:
     container_type cont;
 };
+
+} // containers
+} //graph
+
+
 

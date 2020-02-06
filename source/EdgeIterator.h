@@ -3,17 +3,20 @@
 #include "Graph.h"
 #include "Vertex.h"
 
-class Graph::EdgeIterator
+namespace graph {
+namespace iterators {
+
+class EdgeIterator
 {
 public:
-    using self_type = Graph::EdgeIterator;
+    using self_type = EdgeIterator;
     using value_type = Edge;
     using reference = Edge&;
     using pointer = Edge*;
     using iterator_category = std::bidirectional_iterator_tag;
     using difference = int;
 
-    EdgeIterator(Graph* graph_, Vertex vertexId_, bool isEnded = false);
+    EdgeIterator(models::Graph* graph_, Vertex vertexId_, bool isEnded = false);
     self_type operator++();
     self_type operator++(int);
 
@@ -36,9 +39,14 @@ private:
     void incrementIterator();
     void decrementIterator();
 
-    Graph* graph{nullptr};
+    models::Graph* graph{nullptr};
     Vertex vertexId;
     int edgeNumber{0};
     bool ended{false};
 
 };
+
+
+} // iterators
+} //graph
+

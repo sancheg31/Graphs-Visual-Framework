@@ -13,6 +13,10 @@
 
 #include <iostream>
 
+using namespace graph::models;
+using namespace graph::iterators;
+using namespace graph::containers;
+
 using namespace std;
 
 int main() {

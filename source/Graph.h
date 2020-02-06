@@ -8,25 +8,34 @@
 #include "VertexContainer.h"
 #include "EdgeContainer.h"
 
+namespace graph::iterators {
+    class VertexIterator;
+    class ConstVertexIterator;
+    class EdgeIterator;
+    class ConstEdgeIterator;
+}
+
+namespace graph {
+namespace models {
 
 class Graph
 {
 protected:
 
-    class VertexIterator;
-    class ConstVertexIterator;
-    class EdgeIterator;
-    class ConstEdgeIterator;
+    friend iterators::VertexIterator;
+    friend iterators::ConstVertexIterator;
+    friend iterators::EdgeIterator;
+    friend iterators::ConstEdgeIterator;
 
     using edge_container_type = QHash<QString, EdgeContainer>;
     using vertex_container_type = QHash<QString, Vertex>;
 
 public:
 
-    using vertex_iterator = VertexIterator;
-    using const_vertex_iterator = const VertexIterator;
-    using edge_iterator = EdgeIterator;
-    using const_edge_iterator = ConstEdgeIterator;
+    using vertex_iterator = iterators::VertexIterator;
+    using const_vertex_iterator = const iterators::VertexIterator;
+    using edge_iterator = iterators::EdgeIterator;
+    using const_edge_iterator = iterators::ConstEdgeIterator;
 
     Graph();
     Graph(const Graph&);
@@ -43,25 +52,24 @@ public:
     void addEdge(const Edge&);
     void removeEdge(const Edge&);
 
-    VertexIterator begin();
-    ConstVertexIterator begin() const;
+    vertex_iterator begin();
+    const_vertex_iterator begin() const;
 
-    VertexIterator end();
-    ConstVertexIterator end() const;
+    vertex_iterator end();
+    const_vertex_iterator end() const;
 
-    EdgeIterator begin(const Vertex&);
-    ConstEdgeIterator begin(const Vertex&) const;
+    edge_iterator begin(const Vertex&);
+    const_edge_iterator begin(const Vertex&) const;
 
-    EdgeIterator end(const Vertex&);
-    ConstEdgeIterator end(const Vertex&) const;
+    edge_iterator end(const Vertex&);
+    const_edge_iterator end(const Vertex&) const;
 
 private:
     edge_container_type cont;
     vertex_container_type vert;
 };
 
-#include "VertexIterator.h"
-#include "EdgeIterator.h"
+} //models
+} //graph
 
-#include "ConstVertexIterator.h"
-#include "ConstEdgeIterator.h"
+

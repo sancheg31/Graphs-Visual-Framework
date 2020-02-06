@@ -1,18 +1,24 @@
 #pragma once
 
 #include "Graph.h"
+#include "Edge.h"
 
-class Graph::VertexIterator
+#include "VertexContainer.h"
+
+namespace graph {
+namespace iterators {
+
+class VertexIterator
 {
 public:
-    using self_type = Graph::VertexIterator;
-    using value_type = Edge;
-    using reference = Edge&;
-    using pointer = Edge*;
+    using self_type = VertexIterator;
+    using value_type = models::Edge;
+    using reference = models::Edge&;
+    using pointer = models::Edge*;
     using iterator_category = std::bidirectional_iterator_tag;
     using difference = int;
 
-    VertexIterator(Graph* graph_, bool isEnded = false);
+    VertexIterator(models::Graph* graph_, bool isEnded = false);
     self_type operator++();
     self_type operator++(int);
 
@@ -35,9 +41,14 @@ private:
     void incrementIterator();
     void decrementIterator();
 
-    Graph* graph{nullptr};
-    VertexContainer vertices;
-    VertexContainer::iterator vertexId;
+    models::Graph* graph{nullptr};
+    containers::VertexContainer vertices;
+    containers::VertexContainer::iterator vertexId;
     int edgeNumber{0};
     bool ended{false};
 };
+
+
+} //iterators
+} //graph
+

@@ -7,6 +7,10 @@
 #include "Edge.h"
 #include "Vertex.h"
 
+using namespace graph::models;
+using namespace graph::iterators;
+using namespace graph::containers;
+
 class MaximalFlow
 {
 public:

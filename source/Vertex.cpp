@@ -1,5 +1,8 @@
 #include "Vertex.h"
 
+namespace graph {
+namespace models {
+
 Vertex::Vertex(QString id, int value): id_(id), value_(value) { }
 
 Vertex::Vertex(const Vertex& ob): id_(ob.id_), value_(ob.value_) { }
@@ -29,3 +32,6 @@ bool operator==(const Vertex& ob1, const Vertex& ob2) {
 bool operator!=(const Vertex& ob1, const Vertex& ob2) {
     return !(ob1 == ob2);
 }
+
+} //models
+} //graph

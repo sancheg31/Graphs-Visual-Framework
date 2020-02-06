@@ -2,6 +2,9 @@
 
 #include <QPair>
 
+namespace graph {
+namespace models {
+
 Edge::Edge(): left_(), right_(), value_(0), orientation_(Orientation::None) { }
 
 Edge::Edge(const Vertex& l, const Vertex& r, int val, Edge::Orientation o)
@@ -49,3 +52,8 @@ bool operator==(const Edge& ob1, const Edge& ob2) {
 bool operator!=(const Edge& ob1, const Edge& ob2) {
     return !(ob1 == ob2);
 }
+
+
+} //models
+} //graph
+

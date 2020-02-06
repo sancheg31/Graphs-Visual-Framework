@@ -5,17 +5,20 @@
 
 #include "VertexContainer.h"
 
-class Graph::ConstVertexIterator
+namespace graph {
+namespace iterators {
+
+class ConstVertexIterator
 {
 public:
-    using self_type = Graph::ConstVertexIterator;
-    using value_type = Edge;
-    using reference = const Edge&;
-    using pointer = const Edge*;
+    using self_type = ConstVertexIterator;
+    using value_type = models::Edge;
+    using reference = const models::Edge&;
+    using pointer = const models::Edge*;
     using iterator_category = std::bidirectional_iterator_tag;
     using difference = int;
 
-    ConstVertexIterator(const Graph* graph, bool isEnded = false);
+    ConstVertexIterator(const models::Graph* graph, bool isEnded = false);
 
     self_type operator++();
     self_type operator++(int);
@@ -40,10 +43,13 @@ private:
     void incrementIterator();
     void decrementIterator();
 
-    const Graph* graph;
-    VertexContainer vertices;
-    VertexContainer::iterator vertexId;
+    const models::Graph* graph;
+    containers::VertexContainer vertices;
+    containers::VertexContainer::iterator vertexId;
     int edgeNumber{0};
     bool ended;
 };
+
+} //iterators
+}//graph
 
