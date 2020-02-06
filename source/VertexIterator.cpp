@@ -7,9 +7,9 @@ namespace graph {
 namespace iterators {
 
 VertexIterator::VertexIterator(models::Graph* graph_, bool isEnded):
-    graph(graph_), vertices(graph->vertices()), ended(isEnded) {
+    graph(graph_), vertices(graph->vertices()) {
     vertexId = vertices.begin();
-    ended = (vertexId == vertices.end());
+    ended = isEnded || (vertexId == vertices.end());
 }
 
 auto VertexIterator::operator++() -> self_type {

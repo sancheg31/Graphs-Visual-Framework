@@ -8,8 +8,15 @@ VertexContainer::VertexContainer() { }
 
 VertexContainer::VertexContainer(const VertexContainer& ob): cont(ob.cont) { }
 
+VertexContainer::VertexContainer(VertexContainer&& ob): cont(std::move(ob.cont)){ }
+
 VertexContainer& VertexContainer::operator=(const VertexContainer& ob) {
     cont = ob.cont;
+    return *this;
+}
+
+VertexContainer& VertexContainer::operator=(VertexContainer&& ob) {
+    cont = std::move(ob.cont);
     return *this;
 }
 
@@ -58,7 +65,7 @@ auto VertexContainer::cbegin() const -> const_iterator{
     return cont.cbegin();
 }
 
-auto VertexContainer::end() -> iterator{
+auto VertexContainer::end() -> iterator {
     return cont.end();
 }
 

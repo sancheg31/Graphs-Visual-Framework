@@ -21,8 +21,10 @@ public:
     using const_iterator = container_type::const_iterator;
 
     VertexContainer();
-    VertexContainer(const VertexContainer&);
-    VertexContainer& operator=(const VertexContainer&);
+    VertexContainer(const VertexContainer& ob);
+    VertexContainer(VertexContainer&& ob);
+    VertexContainer& operator=(const VertexContainer& ob);
+    VertexContainer& operator=(VertexContainer&& ob);
 
     void insert(const value_type&);
     void remove(const QString&);

@@ -6,7 +6,7 @@ namespace iterators {
 
 ConstEdgeIterator::ConstEdgeIterator(const models::Graph* graph_, models::Vertex vertexId_, bool isEnded):
     graph(graph_), vertexId(vertexId_), ended(isEnded) {
-    ended = (edgeNumber >= graph->cont[vertexId.id()].size());
+    ended = isEnded || (edgeNumber >= graph->cont[vertexId.id()].size());
 }
 
 auto ConstEdgeIterator::operator++() -> self_type {

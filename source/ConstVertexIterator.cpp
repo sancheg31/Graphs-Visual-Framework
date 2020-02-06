@@ -5,8 +5,9 @@ namespace graph {
 namespace iterators {
 
 ConstVertexIterator::ConstVertexIterator(const models::Graph* graph_, bool isEnded):
-    graph(graph_), vertices(graph->vertices()), vertexId(vertices.begin()), ended(isEnded) {
-    ended = (vertexId == vertices.end());
+    graph(graph_), vertices(graph->vertices()) {
+    vertexId = vertices.begin();
+    ended = isEnded || (vertexId == vertices.end());
 }
 
 auto ConstVertexIterator::operator++() -> self_type {
