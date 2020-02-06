@@ -3,7 +3,6 @@
 namespace graph {
 namespace containers {
 
-
 EdgeContainer::EdgeContainer(int size): cont(size) { }
 
 EdgeContainer::EdgeContainer(const EdgeContainer& ob): cont(ob.cont) { }

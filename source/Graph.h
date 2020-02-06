@@ -27,13 +27,13 @@ protected:
     friend iterators::EdgeIterator;
     friend iterators::ConstEdgeIterator;
 
-    using edge_container_type = QHash<QString, EdgeContainer>;
+    using edge_container_type = QHash<QString, containers::EdgeContainer>;
     using vertex_container_type = QHash<QString, Vertex>;
 
 public:
 
     using vertex_iterator = iterators::VertexIterator;
-    using const_vertex_iterator = const iterators::VertexIterator;
+    using const_vertex_iterator = iterators::ConstVertexIterator;
     using edge_iterator = iterators::EdgeIterator;
     using const_edge_iterator = iterators::ConstEdgeIterator;
 
@@ -41,8 +41,8 @@ public:
     Graph(const Graph&);
     Graph& operator=(const Graph&);
 
-    EdgeContainer edges(const Vertex&) const;
-    VertexContainer vertices() const;
+    containers::EdgeContainer edges(const Vertex&) const;
+    containers::VertexContainer vertices() const;
     const Edge& edge(const Vertex&, const Vertex&) const;
 
 

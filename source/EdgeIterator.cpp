@@ -3,7 +3,7 @@
 namespace graph {
 namespace iterators {
 
-EdgeIterator::EdgeIterator(models::Graph* graph_, Vertex vertexId_, bool isEnded):
+EdgeIterator::EdgeIterator(models::Graph* graph_, models::Vertex vertexId_, bool isEnded):
     graph(graph_), vertexId(vertexId_), ended(isEnded) {
     ended = (edgeNumber >= graph->cont[vertexId.id()].size());
 }

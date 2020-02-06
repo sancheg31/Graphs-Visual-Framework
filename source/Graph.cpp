@@ -11,6 +11,16 @@
 #include "ConstVertexIterator.h"
 #include "ConstEdgeIterator.h"
 
+using graph::containers::VertexContainer;
+using graph::containers::EdgeContainer;
+
+using graph::iterators::VertexIterator;
+using graph::iterators::EdgeIterator;
+using graph::iterators::ConstVertexIterator;
+using graph::iterators::ConstEdgeIterator;
+
+namespace graph {
+namespace models {
 
 Graph::Graph() { }
 
@@ -71,33 +81,38 @@ void Graph::removeEdge(const Edge& edge) {
 }
 
 auto Graph::begin() -> vertex_iterator {
-    return iterators::VertexIterator{this, false};
+    return VertexIterator{this, false};
 }
 
 auto Graph::begin() const -> const_vertex_iterator {
-    return iterators::ConstVertexIterator{this, false};
+    return ConstVertexIterator{this, false};
 }
 
 auto Graph::end() -> vertex_iterator {
-    return iterators::VertexIterator{this, true};
+    return VertexIterator{this, true};
 }
 
 auto Graph::end() const -> const_vertex_iterator {
-    return iterators::ConstVertexIterator{this, true};
+    return ConstVertexIterator{this, true};
 }
 
 auto Graph::begin(const Vertex& ob) -> edge_iterator {
-    return iterators::EdgeIterator{this, ob, false};
+    return EdgeIterator{this, ob, false};
 }
 
 auto Graph::begin(const Vertex& ob) const -> const_edge_iterator {
-    return iterators::ConstEdgeIterator{this, ob, false};
+    return ConstEdgeIterator{this, ob, false};
 }
 
 auto Graph::end(const Vertex& ob) -> edge_iterator {
-    return iterators::EdgeIterator{this, ob, true};
+    return EdgeIterator{this, ob, true};
 }
 
 auto Graph::end(const Vertex& ob) const -> const_edge_iterator {
-    return iterators::ConstEdgeIterator{this, ob, true};
+    return ConstEdgeIterator{this, ob, true};
 }
+
+
+} //models
+} //graph
+

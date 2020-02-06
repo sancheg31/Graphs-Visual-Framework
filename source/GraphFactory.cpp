@@ -16,8 +16,6 @@ Edge* GraphFactory::createEdge() const {
     return new Edge();
 }
 
-
-
 Graph* GraphFactory::createGraph() const {
     return new Graph();
 }

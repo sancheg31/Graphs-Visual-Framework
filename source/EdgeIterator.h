@@ -10,13 +10,13 @@ class EdgeIterator
 {
 public:
     using self_type = EdgeIterator;
-    using value_type = Edge;
-    using reference = Edge&;
-    using pointer = Edge*;
+    using value_type = models::Edge;
+    using reference = models::Edge&;
+    using pointer = models::Edge*;
     using iterator_category = std::bidirectional_iterator_tag;
     using difference = int;
 
-    EdgeIterator(models::Graph* graph_, Vertex vertexId_, bool isEnded = false);
+    EdgeIterator(models::Graph* graph_, models::Vertex vertexId_, bool isEnded = false);
     self_type operator++();
     self_type operator++(int);
 
@@ -40,7 +40,7 @@ private:
     void decrementIterator();
 
     models::Graph* graph{nullptr};
-    Vertex vertexId;
+    models::Vertex vertexId;
     int edgeNumber{0};
     bool ended{false};
 
