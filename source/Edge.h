@@ -16,10 +16,11 @@ public:
         RightToLeft
     };
 
-    Edge();
+    Edge() noexcept;
     Edge(const Vertex&, const Vertex&, int, Orientation = Orientation::None);
-    Edge(const Edge&);
-    Edge& operator=(const Edge&);
+    Edge(const Edge& ob);
+
+    Edge& operator=(const Edge& ob);
 
     const Vertex& left() const;
     const Vertex& right() const;

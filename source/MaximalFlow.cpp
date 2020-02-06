@@ -26,19 +26,20 @@ void MaximalFlow::solve(const Vertex& so, const Vertex& si) {
 
     for (Path path{{}, 1}; path.second != 0; ) {
         path = findPath(newGraph, source, sink);
-        qDebug() << "path found, length is: " << path.second << '\n';
+        qDebug() << "path found, length is: " << path.second;
         if (path.second != 0) {
             paths.push_back(path);
             maximalFlow += path.second;
-            qDebug() << "Total length is: " << maximalFlow << '\n';
+            qDebug() << "Total length is: " << maximalFlow;
             recalculateNet(path, newGraph);
+        } else {
+            qDebug() << "That is the end";
         }
-
     }
     calculateMaximalFlowPerEdge(newGraph, sourceGraph);
 }
 
-MaximalFlow::Path MaximalFlow::findPath(Graph* graph, const Vertex& source, const Vertex& sink) {
+MaximalFlow::Path MaximalFlow::findPath(const Graph* graph, const Vertex& source, const Vertex& sink) {
     Path path{{}, numeric_limits<int>::max()};
     QVector<Vertex> vertexPath{source};
     QVector<Vertex> markedZero{};
@@ -76,7 +77,6 @@ MaximalFlow::Path MaximalFlow::findPath(Graph* graph, const Vertex& source, cons
 }
 EdgeContainer MaximalFlow::filterEdges(const EdgeContainer& oldEdges, const QVector<Vertex>& ids) {
     EdgeContainer edges = oldEdges;
-
     for (const auto & vertex: ids)
         edges.remove_if([&vertex](const Edge& e) { return vertex == e.right(); });
 /*    std::cout << "indexes: ";
@@ -102,8 +102,16 @@ void MaximalFlow::recalculateNet(Path path, Graph* graph) {
     }
 }
 
-void MaximalFlow::calculateMaximalFlowPerEdge(Graph* newg, Graph* oldg) {
-
+void MaximalFlow::calculateMaximalFlowPerEdge(const Graph* newg, const Graph* oldg) {
+    qDebug() << "MaximalFlow::calculate";
+    for (auto newIt = newg->begin(), oldIt = oldg->begin(); newIt != newg->end() && oldIt != oldg->end(); ++newIt, ++oldIt) {
+        qDebug() << "here is an edge";
+        int difference = newIt->value() - oldIt->value();
+        if (difference > 0) {
+            maximalFlowPerEdge.push_back(QPair{*newIt, difference});
+            qDebug() << "Edge found!";
+        }
+    }
 }
 
 

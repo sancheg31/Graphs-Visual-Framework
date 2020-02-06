@@ -24,11 +24,12 @@ namespace models {
 
 Graph::Graph() { }
 
-Graph::Graph(const Graph& ob): cont(ob.cont) {
+Graph::Graph(const Graph& ob): cont(ob.cont), vert(ob.vert) {
 }
 
 Graph& Graph::operator=(const Graph& ob) {
     cont = ob.cont;
+    vert = ob.vert;
     return *this;
 }
 

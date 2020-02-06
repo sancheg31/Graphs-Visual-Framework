@@ -25,9 +25,9 @@ private:
 
     using Path = QPair<containers::EdgeContainer, int>;
 
-    Path findPath(models::Graph*, const models::Vertex&, const models::Vertex&);
+    Path findPath(const models::Graph*, const models::Vertex&, const models::Vertex&);
     void recalculateNet(Path, models::Graph*);
-    void calculateMaximalFlowPerEdge(models::Graph* newg, models::Graph* oldg);
+    void calculateMaximalFlowPerEdge(const models::Graph* newg, const models::Graph* oldg);
     containers::EdgeContainer filterEdges(const containers::EdgeContainer&, const QVector<models::Vertex>&);
 
     models::Graph* sourceGraph;
