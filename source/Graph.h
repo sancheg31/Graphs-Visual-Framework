@@ -72,4 +72,8 @@ private:
 } //models
 } //graph
 
+#include "VertexIterator.h"
+#include "ConstVertexIterator.h"
+#include "EdgeIterator.h"
+#include "ConstEdgeIterator.h"
 
