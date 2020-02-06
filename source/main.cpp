@@ -6,6 +6,8 @@
 #include "GraphFactory.h"
 #include "MaximalFlow.h"
 
+
+
 #include "Vertex.h"
 #include "Edge.h"
 
@@ -40,8 +42,29 @@ int main() {
     }
 
     in.close();
+
+    /*const Graph* g =  graph;
+    EdgeContainer cleanResult;
+    qDebug() << "Edges are: " << '\n';
+    for (auto it = g->begin(); it != g->end(); ++it) {
+        cleanResult.push_back(*it);
+    }
+    std::sort(cleanResult.begin(), cleanResult.end(), [](Edge& a, Edge& b)-> bool {
+        return a.left().id() < b.left().id();
+    });
+
+    for (auto it = cleanResult.begin(); it != cleanResult.end(); ++it) {
+        qDebug() << it->left().id() << " " << it->right().id() << " " << it->value();
+    }*/
+
     maxFlow.solve(Vertex(QString::number(sourceVertex)), Vertex(QString::number(destinationVertex)));
-    cout << maxFlow.getMaximalFlow() << endl;
+    qDebug() << maxFlow.getMaximalFlow();
+    qDebug() << "Maximal flow per edge:";
+    for (auto & edge: maxFlow.getMaximalFlowPerEdges()) {
+        qDebug() << edge.first.left().id() <<  " " << edge.first.right().id() << " " << edge.second;
+    }
+
+    qDebug() << "Paths:";
     for (auto & edges: maxFlow.getPaths()) {
         for (auto & edge: edges.first)
             std::cout << edge.left().id().toStdString() << " -> " << edge.right().id().toStdString() << " ; ";

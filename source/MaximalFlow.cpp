@@ -103,13 +103,11 @@ void MaximalFlow::recalculateNet(Path path, Graph* graph) {
 }
 
 void MaximalFlow::calculateMaximalFlowPerEdge(const Graph* newg, const Graph* oldg) {
-    qDebug() << "MaximalFlow::calculate";
     for (auto newIt = newg->begin(), oldIt = oldg->begin(); newIt != newg->end() && oldIt != oldg->end(); ++newIt, ++oldIt) {
-        qDebug() << "here is an edge";
         int difference = newIt->value() - oldIt->value();
         if (difference > 0) {
             maximalFlowPerEdge.push_back(QPair{*newIt, difference});
-            qDebug() << "Edge found!";
+
         }
     }
 }
