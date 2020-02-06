@@ -5,8 +5,8 @@
 #include "Edge.h"
 #include "Vertex.h"
 
-#include "VertexContainer.h"
-#include "EdgeContainer.h"
+#include "containers/VertexContainer.h"
+#include "containers/EdgeContainer.h"
 
 namespace graph::iterators {
     class VertexIterator;
@@ -72,8 +72,8 @@ private:
 } //models
 } //graph
 
-#include "VertexIterator.h"
-#include "ConstVertexIterator.h"
-#include "EdgeIterator.h"
-#include "ConstEdgeIterator.h"
+#include "iterators/VertexIterator.h"
+#include "iterators/ConstVertexIterator.h"
+#include "iterators/EdgeIterator.h"
+#include "iterators/ConstEdgeIterator.h"
 

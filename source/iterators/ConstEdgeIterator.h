@@ -1,29 +1,35 @@
 #pragma once
 
-#include "Graph.h"
-#include "Vertex.h"
+#include <iterator>
+
+#include "models/Graph.h"
+#include "models/Edge.h"
+#include "models/Vertex.h"
+
 
 namespace graph {
 namespace iterators {
 
-class EdgeIterator
+class ConstEdgeIterator
 {
 public:
-    using self_type = EdgeIterator;
+
+    using self_type = ConstEdgeIterator;
     using value_type = models::Edge;
-    using reference = models::Edge&;
-    using pointer = models::Edge*;
+    using reference = const models::Edge&;
+    using pointer = const models::Edge*;
     using iterator_category = std::bidirectional_iterator_tag;
     using difference = int;
 
-    EdgeIterator(models::Graph* graph_, models::Vertex vertexId_, bool isEnded = false);
+    ConstEdgeIterator(const models::Graph*, models::Vertex vertexId, bool ended = false);
+
     self_type operator++();
     self_type operator++(int);
 
     self_type operator--();
     self_type operator--(int);
 
-    value_type& operator*();
+    const value_type& operator*();
     pointer operator->();
 
     friend bool operator==(const self_type& ob1, const self_type& ob2) {
@@ -39,17 +45,18 @@ public:
     }
 
 private:
+
     void incrementIterator();
     void decrementIterator();
 
-    models::Graph* graph{nullptr};
+    const models::Graph* graph;
     models::Vertex vertexId;
     int edgeNumber{0};
     bool ended{false};
-
 };
-
 
 } // iterators
 } //graph
+
+
 

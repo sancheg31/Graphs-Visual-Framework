@@ -35,20 +35,20 @@ auto VertexIterator::operator--(int) -> self_type {
 }
 
 auto VertexIterator::operator*() -> value_type& {
-    /*if (ended) {
+    if (ended) {
         pointer ptr{nullptr};
         return *ptr;
-    }*/
+    }
     return graph->cont[vertexId->id()][edgeNumber];
 }
 
 auto VertexIterator::operator->() -> pointer {
-    /*if (ended) {
+    if (ended) {
         qDebug() << "disaster";
         pointer ptr{nullptr};
         *ptr = *ptr;
         return ptr;
-    }*/
+    }
     return &graph->cont[vertexId->id()][edgeNumber];
 }
 

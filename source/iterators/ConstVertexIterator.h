@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Graph.h"
-#include "Edge.h"
+#include "models/Graph.h"
+#include "models/Edge.h"
 
-#include "VertexContainer.h"
+#include "containers/VertexContainer.h"
 
 namespace graph {
 namespace iterators {

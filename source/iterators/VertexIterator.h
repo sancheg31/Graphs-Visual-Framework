@@ -1,42 +1,37 @@
 #pragma once
 
-#include <iterator>
+#include "models/Graph.h"
+#include "models/Edge.h"
 
-#include "Graph.h"
-#include "Edge.h"
-#include "Vertex.h"
-
+#include "containers/VertexContainer.h"
 
 namespace graph {
 namespace iterators {
 
-class ConstEdgeIterator
+class VertexIterator
 {
 public:
-
-    using self_type = ConstEdgeIterator;
+    using self_type = VertexIterator;
     using value_type = models::Edge;
-    using reference = const models::Edge&;
-    using pointer = const models::Edge*;
+    using reference = models::Edge&;
+    using pointer = models::Edge*;
     using iterator_category = std::bidirectional_iterator_tag;
     using difference = int;
 
-    ConstEdgeIterator(const models::Graph*, models::Vertex vertexId, bool ended = false);
-
+    VertexIterator(models::Graph* graph_, bool isEnded = false);
     self_type operator++();
     self_type operator++(int);
 
     self_type operator--();
     self_type operator--(int);
 
-    const value_type& operator*();
+    value_type& operator*();
     pointer operator->();
 
     friend bool operator==(const self_type& ob1, const self_type& ob2) {
         bool isEqual = true;
         isEqual &= (ob1.ended == ob2.ended);
-        isEqual &= (ob1.ended == true) || (ob1.graph == ob2.graph && ob1.vertexId == ob2.vertexId &&
-                                           ob1.edgeNumber == ob2.edgeNumber);
+        isEqual &= (ob1.ended == true) || (ob1.graph == ob2.graph && ob1.edgeNumber == ob2.edgeNumber);
         return isEqual;
     }
 
@@ -45,18 +40,17 @@ public:
     }
 
 private:
-
     void incrementIterator();
     void decrementIterator();
 
-    const models::Graph* graph;
-    models::Vertex vertexId;
+    models::Graph* graph{nullptr};
+    containers::VertexContainer vertices;
+    containers::VertexContainer::iterator vertexId;
     int edgeNumber{0};
     bool ended{false};
 };
 
-} // iterators
+
+} //iterators
 } //graph
-
-
 

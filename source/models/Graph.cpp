@@ -5,11 +5,11 @@
 
 #include <QDebug>
 
-#include "VertexIterator.h"
-#include "EdgeIterator.h"
+#include "iterators/VertexIterator.h"
+#include "iterators/EdgeIterator.h"
 
-#include "ConstVertexIterator.h"
-#include "ConstEdgeIterator.h"
+#include "iterators/ConstVertexIterator.h"
+#include "iterators/ConstEdgeIterator.h"
 
 using graph::containers::VertexContainer;
 using graph::containers::EdgeContainer;

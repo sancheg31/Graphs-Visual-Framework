@@ -4,7 +4,7 @@
 #include <QVector>
 #include <QHash>
 
-#include "Edge.h"
+#include "models/Edge.h"
 
 namespace graph {
 namespace containers {

@@ -19,33 +19,35 @@ TEMPLATE = app
 DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
-    source/ConstEdgeIterator.cpp \
-    source/ConstVertexIterator.cpp \
-    source/Edge.cpp \
-    source/EdgeContainer.cpp \
-    source/EdgeIterator.cpp \
-    source/Graph.cpp \
-    source/GraphFactory.cpp \
-    source/GraphImplementation.cpp \
-    source/MaximalFlow.cpp \
-    source/Vertex.cpp \
-    source/VertexContainer.cpp \
-    source/VertexIterator.cpp \
+    source/algorithms/MaximalFlow.cpp \
+    source/containers/EdgeContainer.cpp \
+    source/containers/VertexContainer.cpp \
+    source/iterators/ConstEdgeIterator.cpp \
+    source/iterators/ConstVertexIterator.cpp \
+    source/iterators/EdgeIterator.cpp \
+    source/iterators/VertexIterator.cpp \
     source/main.cpp \
+    source/models/Edge.cpp \
+    source/models/Graph.cpp \
+    source/models/GraphFactory.cpp \
+    source/models/GraphImplementation.cpp \
+    source/models/Vertex.cpp
 
 HEADERS += \
-    source/ConstEdgeIterator.h \
-    source/ConstVertexIterator.h \
-    source/Edge.h \
-    source/EdgeContainer.h \
-    source/EdgeIterator.h \
-    source/Graph.h \
-    source/GraphFactory.h \
-    source/GraphImplementation.h \
-    source/MaximalFlow.h \
-    source/Vertex.h \
-    source/VertexContainer.h \
-    source/VertexIterator.h
+    source/algorithms/MaximalFlow.h \
+    source/containers/EdgeContainer.h \
+    source/containers/VertexContainer.h \
+    source/iterators/ConstEdgeIterator.h \
+    source/iterators/ConstVertexIterator.h \
+    source/iterators/EdgeIterator.h \
+    source/iterators/VertexIterator.h \
+    source/models/Edge.h \
+    source/models/Graph.h \
+    source/models/GraphFactory.h \
+    source/models/GraphImplementation.h \
+    source/models/Vertex.h
+
+INCLUDEPATH += source
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -2,10 +2,11 @@
 
 #include <QVector>
 
-#include "Graph.h"
-#include "EdgeContainer.h"
-#include "Edge.h"
-#include "Vertex.h"
+#include "models/Graph.h"
+#include "models/Edge.h"
+#include "models/Vertex.h"
+
+#include "containers/EdgeContainer.h"
 
 namespace graph {
 namespace algorithms {

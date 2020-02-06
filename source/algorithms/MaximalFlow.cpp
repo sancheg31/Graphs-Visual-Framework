@@ -4,7 +4,7 @@
 #include <QDebug>
 #include <iostream>
 
-#include "VertexContainer.h"
+#include "containers/VertexContainer.h"
 
 using std::numeric_limits;
 using std::max_element;
@@ -104,14 +104,13 @@ void MaximalFlow::recalculateNet(Path path, Graph* graph) {
 
 void MaximalFlow::calculateMaximalFlowPerEdge(const Graph* newg, const Graph* oldg) {
     for (auto newIt = newg->begin(), oldIt = oldg->begin(); newIt != newg->end() && oldIt != oldg->end(); ++newIt, ++oldIt) {
-        int difference = newIt->value() - oldIt->value();
+        int difference = oldIt->value() - newIt->value();
         if (difference > 0) {
             maximalFlowPerEdge.push_back(QPair{*newIt, difference});
 
         }
     }
 }
-
 
 int MaximalFlow::getMaximalFlow() const {
     return maximalFlow;

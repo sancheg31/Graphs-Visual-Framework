@@ -1,24 +1,22 @@
 #pragma once
 
-#include "Graph.h"
-#include "Edge.h"
-
-#include "VertexContainer.h"
+#include "models/Graph.h"
+#include "models/Vertex.h"
 
 namespace graph {
 namespace iterators {
 
-class VertexIterator
+class EdgeIterator
 {
 public:
-    using self_type = VertexIterator;
+    using self_type = EdgeIterator;
     using value_type = models::Edge;
     using reference = models::Edge&;
     using pointer = models::Edge*;
     using iterator_category = std::bidirectional_iterator_tag;
     using difference = int;
 
-    VertexIterator(models::Graph* graph_, bool isEnded = false);
+    EdgeIterator(models::Graph* graph_, models::Vertex vertexId_, bool isEnded = false);
     self_type operator++();
     self_type operator++(int);
 
@@ -31,7 +29,8 @@ public:
     friend bool operator==(const self_type& ob1, const self_type& ob2) {
         bool isEqual = true;
         isEqual &= (ob1.ended == ob2.ended);
-        isEqual &= (ob1.ended == true) || (ob1.graph == ob2.graph && ob1.edgeNumber == ob2.edgeNumber);
+        isEqual &= (ob1.ended == true) || (ob1.graph == ob2.graph && ob1.vertexId == ob2.vertexId &&
+                                           ob1.edgeNumber == ob2.edgeNumber);
         return isEqual;
     }
 
@@ -44,13 +43,13 @@ private:
     void decrementIterator();
 
     models::Graph* graph{nullptr};
-    containers::VertexContainer vertices;
-    containers::VertexContainer::iterator vertexId;
+    models::Vertex vertexId;
     int edgeNumber{0};
     bool ended{false};
+
 };
 
 
-} //iterators
+} // iterators
 } //graph
 
