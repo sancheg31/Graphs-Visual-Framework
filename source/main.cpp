@@ -27,7 +27,7 @@ int main() {
     int sourceVertex, destinationVertex;
     Graph* graph = new Graph();
     GraphFactory* factory = GraphFactory::instance();
-    MaximalFlow maxFlow(graph);
+    graph::algorithms::MaximalFlow maxFlow(graph);
 
     in >> numOfVertex >> numOfEdge;            // считываем количество вершин и ребер
     in >> sourceVertex >> destinationVertex;   // считываем источник и сток

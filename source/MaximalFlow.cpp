@@ -2,10 +2,20 @@
 
 #include <numeric>
 #include <QDebug>
+#include <iostream>
 
 #include "VertexContainer.h"
 
-using namespace graph;
+using std::numeric_limits;
+using std::max_element;
+using std::min;
+using std::cout;
+
+using namespace graph::models;
+using namespace graph::containers;
+
+namespace graph {
+namespace algorithms {
 
 MaximalFlow::MaximalFlow(Graph* sg): sourceGraph(sg) { }
 
@@ -28,17 +38,15 @@ void MaximalFlow::solve(const Vertex& so, const Vertex& si) {
     calculateMaximalFlowPerEdge(newGraph, sourceGraph);
 }
 
-#include <iostream>
-
 MaximalFlow::Path MaximalFlow::findPath(Graph* graph, const Vertex& source, const Vertex& sink) {
-    Path path{{}, std::numeric_limits<int>::max()};
+    Path path{{}, numeric_limits<int>::max()};
     QVector<Vertex> vertexPath{source};
     QVector<Vertex> markedZero{};
     Vertex currentVertex = source;
     while (currentVertex != sink) {
         EdgeContainer edges = filterEdges(filterEdges(graph->edges(currentVertex), vertexPath), markedZero);
         Edge edge{};
-        auto it = std::max_element(edges.begin(), edges.end(), [](const Edge& ob1, const Edge& ob2) -> bool {
+        auto it = max_element(edges.begin(), edges.end(), [](const Edge& ob1, const Edge& ob2) -> bool {
             return ob1.value() < ob2.value();
         });
         if (it != edges.end())
@@ -59,7 +67,7 @@ MaximalFlow::Path MaximalFlow::findPath(Graph* graph, const Vertex& source, cons
         }
         else {
             path.first.push_back(edge);
-            path.second = std::min(path.second, edge.value());
+            path.second = min(path.second, edge.value());
             currentVertex = edge.right();
             vertexPath.push_back(currentVertex);
         }
@@ -112,3 +120,7 @@ QVector<QPair<Edge, int>> MaximalFlow::getMaximalFlowPerEdges() const {
 }
 
 
+
+
+} // algorithms
+} //graph

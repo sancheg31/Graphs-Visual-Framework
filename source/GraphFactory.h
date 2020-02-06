@@ -5,7 +5,8 @@
 
 #include "Graph.h"
 
-using namespace graph::models;
+namespace graph {
+namespace models {
 
 class GraphFactory
 {
@@ -15,11 +16,15 @@ public:
 
     static GraphFactory* instance();
 
-    Vertex* createVertex() const;
+    models::Vertex* createVertex() const;
     Edge* createEdge() const;
     Graph* createGraph() const;
 
 protected:
     GraphFactory();
 };
+
+} //models
+} //graph
+
 

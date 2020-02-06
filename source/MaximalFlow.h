@@ -7,38 +7,41 @@
 #include "Edge.h"
 #include "Vertex.h"
 
-using namespace graph::models;
-using namespace graph::iterators;
-using namespace graph::containers;
+namespace graph {
+namespace algorithms {
 
 class MaximalFlow
 {
 public:
-    MaximalFlow(Graph* graph);
+    MaximalFlow(models::Graph* graph);
 
-    void solve(const Vertex& sink, const Vertex& source);
+    void solve(const models::Vertex& sink, const models::Vertex& source);
 
     int getMaximalFlow() const;
-    QVector<QPair<EdgeContainer, int>> getPaths() const;
-    QVector<QPair<Edge, int>> getMaximalFlowPerEdges() const;
-
+    QVector<QPair<containers::EdgeContainer, int>> getPaths() const;
+    QVector<QPair<models::Edge, int>> getMaximalFlowPerEdges() const;
 
 private:
 
-    using Path = QPair<EdgeContainer, int>;
+    using Path = QPair<containers::EdgeContainer, int>;
 
-    Path findPath(Graph*, const Vertex&, const Vertex&);
-    void recalculateNet(Path, Graph*);
-    void calculateMaximalFlowPerEdge(Graph* newg, Graph* oldg);
-    EdgeContainer filterEdges(const EdgeContainer&, const QVector<Vertex>&);
+    Path findPath(models::Graph*, const models::Vertex&, const models::Vertex&);
+    void recalculateNet(Path, models::Graph*);
+    void calculateMaximalFlowPerEdge(models::Graph* newg, models::Graph* oldg);
+    containers::EdgeContainer filterEdges(const containers::EdgeContainer&, const QVector<models::Vertex>&);
 
-    Graph* sourceGraph;
-    Graph* newGraph;
-    Vertex source;
-    Vertex sink;
+    models::Graph* sourceGraph;
+    models::Graph* newGraph;
+    models::Vertex source;
+    models::Vertex sink;
 
     QVector<Path> paths;
-    QVector<QPair<Edge, int>> maximalFlowPerEdge;
+    QVector<QPair<models::Edge, int>> maximalFlowPerEdge;
     int maximalFlow{0};
 };
+
+} //algorithms
+} //graph
+
+
 

@@ -1,5 +1,7 @@
 #include "GraphFactory.h"
 
+namespace graph {
+namespace models {
 
 GraphFactory* GraphFactory::instance() {
     static GraphFactory* instance_;
@@ -8,16 +10,21 @@ GraphFactory* GraphFactory::instance() {
     return instance_;
 }
 
-Vertex* GraphFactory::createVertex() const {
+models::Vertex* GraphFactory::createVertex() const {
     return new Vertex();
 }
 
-Edge* GraphFactory::createEdge() const {
+models::Edge* GraphFactory::createEdge() const {
     return new Edge();
 }
 
-Graph* GraphFactory::createGraph() const {
+models::Graph* GraphFactory::createGraph() const {
     return new Graph();
 }
 
 GraphFactory::GraphFactory() { }
+
+} // models
+} //graph
+
+
